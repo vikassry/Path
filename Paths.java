@@ -1,6 +1,5 @@
 import java.util.*;
 
-
 class Path{
 	Map<String,String> path;
 	String src, dst, status;
@@ -12,7 +11,7 @@ class Path{
 	}
 	public int isPath(){
 		isPath = (path.containsKey(src)==false) ? 2 : 
-		(path.containsValue(dst)) ?  path.get(src).equals(dst) ? 1 : 0 : 3 ;
+		(path.containsValue(dst)==false) ? 3 : path.get(src).equals(dst) ? 1 : 0;
 		return isPath;
 	}
 	public String givePathStatus(){
@@ -35,8 +34,12 @@ public class Paths {
 		path.put("Seoul","Beijing");
 		path.put("Beijing","Tokyo");
 
-		Path p = new Path(path, args[0], args[1]);
-		System.out.println(p.isPath());
-		System.out.println(p.givePathStatus());
+		if(args.length == 2){
+			Path p = new Path(path, args[0], args[1]);
+			System.out.println(p.isPath());
+			System.out.println(p.givePathStatus());
+		}
+		else 
+			System.out.println("The source and destination are mandatory to mention");
 	}
 }
