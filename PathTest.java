@@ -1,14 +1,22 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
+
 
 public class PathTest{
 
 	@Test
-	public void map_returns_new_list_with_incremented_integerValues(){
-		
+	public void isPath_returns_true_for_direct_flight_between_Singapore_Bangalore(){
+		Map<String,String> path = new HashMap<String,String>();
+		path.put("Bangalore","Singapore");
+		assertEquals(Path.isPath(path,"Bangalore","Singapore"), true);
 	}
 
+	@Test
+	public void isPath_returns_true_for_direct_flight_between_Bangalore_Singapore(){
+		Map<String,String> path = new HashMap<String,String>();
+		path.put("Bangalore","Singapore");
+		assertEquals(Path.isPath(path,"Singapore","Bangalore"), true);
+	}
 }
