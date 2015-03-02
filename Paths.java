@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Path {
+public class Paths {
 	public static boolean isPath(Map<String,String> path, String src, String dst){
 		return ((path.get(dst)!=null && path.get(dst).equals(src)) || 
 			(path.get(src)!=null && path.get(src).equals(dst)));
