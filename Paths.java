@@ -36,7 +36,7 @@ public class Paths {
 		path.put("Beijing","Tokyo");
 
 		Path p = new Path(path, args[0], args[1]);
-		p.isPath();
+		System.out.println(p.isPath());
 		System.out.println(p.givePathStatus());
 	}
 }
