@@ -36,5 +36,21 @@ public class PathsTest{
 		Path p = new Path(path,"Bangalore","Stockholm");
 		assertEquals(p.isPath(), 3);
 	}
-	
+
+	@Test
+	public void isPath_returns_No_city_named_Chennai_in_database_when_no_direct_flight_from_Chennai_available(){
+		Map<String,String> path = new HashMap<String,String>();
+		path.put("Bangalore","Singapore");
+		Path p = new Path(path,"Chennai","Singapore");
+		assertEquals(p.isPath(), 2);
+	}
+
+	@Test
+	public void isPath_returns_No_city_named_Chennai_in_database_when_no_flight_to_Stockholm_available(){
+		Map<String,String> path = new HashMap<String,String>();
+		path.put("Bangalore","Singapore");
+		Path p = new Path(path,"Bangalore","Stockholm");
+		assertEquals(p.isPath(), 3);
+	}
+
 }

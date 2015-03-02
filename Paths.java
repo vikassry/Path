@@ -2,21 +2,13 @@ import java.util.*;
 
 
 class Path{
-	Map<String,String> path;
-	String src, dst, status;
-	int isPath;
-	public Path(Map<String,String> path, String src, String dst){
-		this.path = path;
-		this.src = src;
-		this.dst = dst;
-	}
-	public int isPath(){
-		isPath = (path.containsKey(src)==false) ? 2 : 
+	public static int isPath(Map<String,String> path, String src, String dst){
+		return (path.containsKey(src)==false) ? 2 : 
 		(path.containsValue(dst)) ?  path.get(src).equals(dst) ? 1 : 0 : 3 ;
-		return isPath;
 	}
-	public String givePathStatus(){
-		switch(isPath){
+	public static String givePathStatus(Map<String,String> path, String src, String dst){
+		String status="";
+		switch(Path.isPath(path,src,dst)){
 			case 0 : status = "false"; break;
 			case 1 : status = "true"; break;
 			case 2 : status = "No city named "+src+"in database"; break;
@@ -34,9 +26,7 @@ public class Paths {
 		path.put("Singapore","Dubai");
 		path.put("Seoul","Beijing");
 		path.put("Beijing","Tokyo");
-
-		Path p = new Path(path, args[0], args[1]);
-		p.isPath();
-		System.out.println(p.givePathStatus());
+		System.out.println(Path.isPath(path, args[0],args[1]));
+		System.out.println(Path.givePathStatus(path, args[0],args[1]));
 	}
 }
