@@ -1,14 +1,42 @@
 import java.util.*;
 
-public class Paths {
-	public static boolean isPath(Map<String,String> path, String src, String dst){
-		return ((path.get(dst)!=null && path.get(dst).equals(src)) || 
-			(path.get(src)!=null && path.get(src).equals(dst)));
-	}
 
+class Path{
+	Map<String,String> path;
+	String src, dst, status;
+	int isPath;
+	public Path(Map<String,String> path, String src, String dst){
+		this.path = path;
+		this.src = src;
+		this.dst = dst;
+	}
+	public int isPath(){
+		isPath = (path.containsKey(src)==false) ? 2 : 
+		(path.containsValue(dst)) ?  path.get(src).equals(dst) ? 1 : 0 : 3 ;
+		return isPath;
+	}
+	public String givePathStatus(){
+		switch(isPath){
+			case 0 : status = "false"; break;
+			case 1 : status = "true"; break;
+			case 2 : status = "No city named "+src+"in database"; break;
+			case 3 : status = "No city named "+dst+"in database"; break;	
+		}
+		return status;
+	}
+}
+
+public class Paths {
 	public static void main(String[] args) {
 		Map<String,String> path = new HashMap<String,String>();
 		path.put("Bangalore","Singapore");
-		System.out.println(isPath(path, args[0], args[1]));
+		path.put("Singapore","Seoul");
+		path.put("Singapore","Dubai");
+		path.put("Seoul","Beijing");
+		path.put("Beijing","Tokyo");
+
+		Path p = new Path(path, args[0], args[1]);
+		p.isPath();
+		System.out.println(p.givePathStatus());
 	}
 }
