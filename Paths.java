@@ -1,20 +1,6 @@
 import java.util.*;
-// import java.util.Arraylist;
-// import java.util.List;
 
-// class City{
-// 	String city;
-// 	List<String> directGoesTo = new ArrayList<String>();
-	
-// 	public City(String city){
-// 		this.city = city;
-// 	}
-// 	// public void addDestination(String dst){
-// 	// 	directGoesTo.add(dst);
-// 	// }
-// }
-
-class Path{
+class PathManager{
 	Map<String,List<String>> pathMap = new HashMap<String, List<String>>();
 	String status;
 
@@ -56,6 +42,7 @@ class Path{
 		}
 		return 0;
 	}
+	
 	public int isPath(String src, String dst){
 		List<String> pathFinder = new ArrayList<String>();
 		return (this.areCitiesValid(src, dst)==1) ? this.checkForAnyPath(src,dst,pathFinder) 
@@ -82,7 +69,7 @@ public class Paths {
 							{"Beijing","Tokyo"}};
 
 		if(args.length == 2){
-			Path p = new Path();
+			PathManager p = new PathManager();
 			p.addPaths(routes);
 			System.out.println(p.givePathStatus(args[0], args[1]));
 		}
