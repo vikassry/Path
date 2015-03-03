@@ -34,9 +34,6 @@ public class PathsTest{
 						{"Singapore","Seoul"}, {"Singapore","Dubai"},
 						{"Seoul","Beijing"}, {"Beijing","Tokyo"}};
 		p.addPaths(routes);
-		for (String city : p.pathMap.keySet()) {
-			System.out.println("=  src "+city + " destination-> " + p.pathMap.get(city));
-		}
 
 		Map<String,List<String>> pathMap = p.pathMap;
 		assertEquals(pathMap.get("Bangalore").get(0),"Singapore");
@@ -71,38 +68,89 @@ public class PathsTest{
 	}
 
 	@Test
-	public void isDirectPath_returns_true_when_direct_path_between_BLR_SGP_(){
+	public void isDirectPathBetween_returns_true_when_direct_path_between_BLR_SGP_(){
 		String [] cities = {"Bangalore","Beijing","Singapore","Seoul"};
 		Path p = new Path(cities);
 		String [][] routes = {{"Bangalore","Singapore"},
 						{"Singapore","Seoul"}, {"Singapore","Dubai"},
 						{"Seoul","Beijing"}, {"Beijing","Tokyo"}};
 		p.addPaths(routes);
-		assertTrue(p.isDirectPath("Bangalore","Singapore"));
+		assertTrue(p.isDirectPathBetween("Bangalore","Singapore"));
 	}
 
 	@Test
-	public void isDirectPath_returns_false_when_direct_path_between_BLR_TKY(){
+	public void isDirectPathBetween_returns_false_when_direct_path_between_BLR_TKY(){
 		String [] cities = {"Bangalore","Beijing","Singapore","Seoul"};
 		Path p = new Path(cities);
 		String [][] routes = {{"Bangalore","Singapore"},
 						{"Singapore","Seoul"}, {"Singapore","Dubai"},
 						{"Seoul","Beijing"}, {"Beijing","Tokyo"}};
 		p.addPaths(routes);
-		assertFalse(p.isDirectPath("Bangalore","Tokyo"));
+		assertFalse(p.isDirectPathBetween("Bangalore","Tokyo"));
 	}
 
 	@Test
-	public void isDirectPath_returns_false_when_direct_path_between_any_invalid_city(){
+	public void isDirectPathBetween_returns_false_when_direct_path_between_any_invalid_city(){
 		String [] cities = {"Bangalore","Beijing","Singapore","Seoul"};
 		Path p = new Path(cities);
 		String [][] routes = {{"Bangalore","Singapore"},
 						{"Singapore","Seoul"}, {"Singapore","Dubai"},
 						{"Seoul","Beijing"}, {"Beijing","Tokyo"}};
 		p.addPaths(routes);
-		assertFalse(p.isDirectPath("Bangalore","Chennai"));
+		assertFalse(p.isDirectPathBetween("Bangalore","Chennai"));
 	}
 
+	@Test
+	public void checkForAnyPath_returns_1_for_direct_path_between_2_cities(){
+		String [] cities = {"Bangalore","Beijing","Singapore","Seoul"};
+		Path p = new Path(cities);
+		String [][] routes = {{"Bangalore","Singapore"},
+						{"Singapore","Seoul"}, {"Singapore","Dubai"},
+						{"Seoul","Beijing"}, {"Beijing","Tokyo"}};
+		p.addPaths(routes);
+		List<String> pathFinder = new ArrayList<String>();
+		assertEquals(p.checkForAnyPath("Bangalore","Singapore",pathFinder),1);
+	}
+
+	@Test
+	public void checkForAnyPath_returns_1_for_indirect_path_between_BLR_and_TKY(){
+		String [] cities = {"Bangalore","Beijing","Singapore","Seoul"};
+		Path p = new Path(cities);
+		String [][] routes = {{"Bangalore","Singapore"},
+						{"Singapore","Seoul"}, {"Singapore","Dubai"},
+						{"Seoul","Beijing"}, {"Beijing","Tokyo"}};
+		p.addPaths(routes);
+		List<String> pathFinder = new ArrayList<String>();
+		
+		assertEquals(p.checkForAnyPath("Bangalore","Tokyo",pathFinder),1);
+	}
+
+	@Test
+	public void checkForAnyPath_returns_1_for_indirect_path_between_TKY_and_BLR(){
+		String [] cities = {"Bangalore","Beijing","Singapore","Seoul"};
+		Path p = new Path(cities);
+		String [][] routes = {{"Bangalore","Singapore"},
+						{"Singapore","Seoul"}, {"Singapore","Dubai"},
+						{"Seoul","Beijing"}, {"Beijing","Tokyo"}};
+		p.addPaths(routes);
+		List<String> pathFinder = new ArrayList<String>();
+		
+		assertEquals(p.checkForAnyPath("Tokyo","Bangalore",pathFinder),1);
+	}
+
+	@Test
+	public void checkForAnyPath_returns_0_for_path_between_BLR_and_BJNG(){
+		String [] cities = {"Bangalore","Beijing","Singapore","Seoul"};
+		Path p = new Path(cities);
+		String [][] routes = {{"Bangalore","Singapore"},
+							{"Singapore","Seoul"},
+							{"Beijing","Tokyo"}};
+		p.addPaths(routes);
+		List<String> pathFinder = new ArrayList<String>();
+		
+		assertEquals(p.checkForAnyPath("Bangalore","Beijing",pathFinder),0);
+		assertEquals(p.checkForAnyPath("Beijing","Bangalore",pathFinder),0);
+	}
 	// @Test
 	// public void givePathMapStatus_gives_No_city_named_Chennai_in_database_when_no_direct_flight_from_Chennai_available(){
 	// 	Map<String,String> path = new HashMap<String,String>();

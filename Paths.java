@@ -18,7 +18,6 @@ class Path{
 	Map<String,List<String>> pathMap = new HashMap<String, List<String>>();
 	String src, dst, status;
 	int isPath;
-	// List<String> 
 	public Path(String[] cities) {
 		for (String city: cities) {
 			List<String> list = new ArrayList<String>();
@@ -50,31 +49,31 @@ class Path{
 		return 1;
 	}
 
-	public boolean isDirectPath(String src, String dst){
+	public boolean isDirectPathBetween(String src, String dst){
 		return (this.areCitiesValid(src,dst)==1 && pathMap.get(src).contains(dst));
 	}
 
+	public int checkForAnyPath(String src, String dst, List<String> pathFinder) {
+		pathFinder.add(src);
+		if(this.isDirectPathBetween(src, dst)) return 1;
+		for (String city: pathMap.get(src)) {
+			if(pathFinder.contains(city)==false) {
+				return checkForAnyPath(city, dst, pathFinder);
+			}
+		}
+		return 0;
+	}
 	public int isPath(String src, String dst){
-		isPath = (this.areCitiesValid(src, dst)==1) ? pathMap.get(src).equals(dst)
-		 ? 1 : 0 : this.areCitiesValid(src, dst);
+		List<String> pathFinder = new ArrayList<String>();
+		isPath = (this.areCitiesValid(src, dst)==1) ? this.checkForAnyPath(src,dst,pathFinder) : this.areCitiesValid(src, dst);
 		return isPath;
 	}
 
 //-----------------------------------------------------------
-	// public Boolean trackThePath(String from, String to, List<String> pathMap) {
-	// 	pathMap.add(from);
-	// 	if(this.hasDirectPath(from, to)) return true;
-	// 	for (String city: allCities.get(from).directTo) {
-	// 		if(!pathMap.contains(city)) {
-	// 			if(trackThePath(city, to, pathMap)) return true;
-	// 		}
-	// 	}
-	// 	return false;
-	// }
 
-	// public Boolean hasPath(String from, String to) {
+	// public Boolean isPath(String from, String to) {
 	// 	List<String> pathMap = new ArrayList<String>();
-	// 	return this.trackThePath(from, to, pathMap);
+	// 	return this.checkForAnyPath(from, to, pathMap);
 	// }
 //-------------------------------------------------------------
 
