@@ -116,6 +116,18 @@ public class PathsTest{
 	}
 
 	@Test
+	public void checkForAnyPath_returns_3_for_path_between_BLR_and_STKHM(){
+		Path p = new Path();
+		String [][] routes = {{"Bangalore","Singapore"},
+						{"Singapore","Seoul"}, {"Singapore","Dubai"},
+						{"Seoul","Beijing"}, {"Beijing","Tokyo"}};
+		p.addPaths(routes);
+		List<String> pathFinder = new ArrayList<String>();
+		
+		assertEquals(p.checkForAnyPath("Bangalore","Stockholm",pathFinder),0);
+	}
+
+	@Test
 	public void checkForAnyPath_returns_1_for_indirect_path_between_TKY_and_BLR(){
 		Path p = new Path();
 		String [][] routes = {{"Bangalore","Singapore"},
@@ -130,9 +142,7 @@ public class PathsTest{
 	@Test
 	public void checkForAnyPath_returns_0_for_path_between_BLR_and_BJNG(){
 		Path p = new Path();
-		String [][] routes = {{"Bangalore","Singapore"},
-							{"Singapore","Seoul"},
-							{"Beijing","Tokyo"}};
+		String [][] routes = {{"Bangalore","Singapore"},{"Beijing","Tokyo"}};
 		p.addPaths(routes);
 		List<String> pathFinder = new ArrayList<String>();
 		
@@ -140,40 +150,40 @@ public class PathsTest{
 		assertEquals(p.checkForAnyPath("Beijing","Bangalore",pathFinder),0);
 	}
 
-	// @Test
-	// public void givePathMapStatus_gives_No_city_named_Chennai_in_database_when_no_direct_flight_from_Chennai_available(){
-	// 	Map<String,String> path = new HashMap<String,String>();
-	// 	path.put("Bangalore","Singapore");
-	// 	Path p = new Path(path,"Chennai","Singapore");
-	// 	assertEquals(p.isPath(), 2);
-	// 	assertEquals(p.givePathStatus(),"No city named Chennai in database");
-	// }
+	@Test
+	public void givePathMapStatus_gives_No_city_named_Chennai_in_database_when_no_direct_flight_from_Chennai_available(){
+		Path p = new Path();
+		String [][] routes = {{"Bangalore","Singapore"},{"Singapore","Seoul"}};
+		p.addPaths(routes);
 
-	// @Test
-	// public void givePathStatus_gives_No_city_named_Stockholm_in_database_when_no_flight_to_Stockholm_available(){
-	// 	Map<String,String> path = new HashMap<String,String>();
-	// 	path.put("Bangalore","Singapore");
-	// 	Path p = new Path(path,"Bangalore","Stockholm");
-	// 	assertEquals(p.isPath(), 3);
-	// 	assertEquals(p.givePathStatus(), "No city named Stockholm in database");
+		assertEquals(p.givePathStatus("Chennai","Singapore"),"No city named Chennai in database");
+	}
 
-	// }
-	// @Test
-	// public void isPath_returns_true_for_direct_flight_between_Singapore_Bangalore(){
-	// 	Map<String,String> path = new HashMap<String,String>();
-	// 	path.put("Bangalore","Singapore");
-	// 	Path p = new Path(path,"Bangalore","Singapore");
-	// 	assertEquals(p.isPath(), 1);
-	// 	assertEquals(p.givePathStatus(), "true");
-	// }
+	@Test
+	public void givePathStatus_gives_No_city_named_Stockholm_in_database_when_no_flight_to_Stockholm_available(){
+		Path p = new Path();
+		String [][] routes = {{"Bangalore","Singapore"},{"Singapore","Seoul"}};
+		p.addPaths(routes);
 
-	// @Test
-	// public void isPath_returns_false_when_no_direct_flight_between_Bangalore_Tokyo(){
-	// 	Map<String,String> path = new HashMap<String,String>();
-	// 	path.put("Bangalore","Singapore");
-	// 	path.put("Beijing","Tokyo");
-	// 	Path p = new Path(path,"Bangalore","Tokyo");
-	// 	assertEquals(p.isPath(), 0);
-	// 	assertEquals(p.givePathStatus(), "false");
-	// }
+		assertEquals(p.givePathStatus("Bangalore","Stockholm"), "No city named Stockholm in database");
+	}
+	@Test
+	public void givePathStatus_returns_true_for_direct_flight_between_Singapore_Bangalore(){
+		Path p = new Path();
+		String [][] routes = {{"Bangalore","Singapore"},{"Singapore","Seoul"}};
+		p.addPaths(routes);
+
+		assertEquals(p.givePathStatus("Bangalore","Singapore"), "true");
+		assertEquals(p.givePathStatus("Seoul","Bangalore"), "true");
+	}
+
+	@Test
+	public void givePathStatus_returns_false_when_no_direct_flight_between_Bangalore_Tokyo(){
+		Path p = new Path();
+		String [][] routes = {{"Bangalore","Singapore"},{"Tokyo","Seoul"}};
+		p.addPaths(routes);
+
+		assertEquals(p.givePathStatus("Singapore","Tokyo"), "false");
+	}
+
 }

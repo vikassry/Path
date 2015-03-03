@@ -16,14 +16,7 @@ import java.util.*;
 
 class Path{
 	Map<String,List<String>> pathMap = new HashMap<String, List<String>>();
-	String src, dst, status;
-	int isPath;
-	// public Path(String[] cities) {
-	// 	for (String city: cities) {
-	// 		List<String> list = new ArrayList<String>();
-	// 		pathMap.put(city, list);
-	// 	}
-	// }
+	String status;
 
 	public void setPath(String src, String dst){
 		if(pathMap.containsKey(src)){
@@ -65,8 +58,8 @@ class Path{
 	}
 	public int isPath(String src, String dst){
 		List<String> pathFinder = new ArrayList<String>();
-		isPath = (this.areCitiesValid(src, dst)==1) ? this.checkForAnyPath(src,dst,pathFinder) : this.areCitiesValid(src, dst);
-		return isPath;
+		return (this.areCitiesValid(src, dst)==1) ? this.checkForAnyPath(src,dst,pathFinder) 
+		: this.areCitiesValid(src, dst);
 	}
 
 	public String givePathStatus(String src, String dst){
