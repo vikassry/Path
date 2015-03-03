@@ -15,25 +15,25 @@ import java.util.*;
 // }
 
 class Path{
-	Map<String,List<String>> path = new HashMap<String, List<String>>();
+	Map<String,List<String>> pathMap = new HashMap<String, List<String>>();
 	String src, dst, status;
 	int isPath;
-	
+	// List<String> 
 	public Path(String[] cities) {
 		for (String city: cities) {
 			List<String> list = new ArrayList<String>();
-			path.put(city, list);
+			pathMap.put(city, list);
 		}
 	}
 
 	public void setPath(String src, String dst){
-		if(path.containsKey(src)){
-			path.get(src).add(dst);
+		if(pathMap.containsKey(src)){
+			pathMap.get(src).add(dst);
 		}
 		else{
 			List<String> list = new ArrayList<String>();
 			list.add(dst);
-			path.put(src, list);
+			pathMap.put(src, list);
 		}
 	}
 
@@ -45,19 +45,39 @@ class Path{
 	}
 
 	public int areCitiesValid(String src, String dst){
-		if(path.get(src)==null) return 2;
-		if(path.get(dst)==null) return 3;
+		if(pathMap.get(src)==null) return 2;
+		if(pathMap.get(dst)==null) return 3;
 		return 1;
 	}
 
 	public boolean isDirectPath(String src, String dst){
-		return path.get(src).contains(dst);
+		return pathMap.get(src).contains(dst);
 	}
 
 	public int isPath(String src, String dst){
-		isPath = (this.areCitiesValid(src, dst)==1) ? path.get(src).equals(dst) ? 1 : 0 : this.areCitiesValid(src, dst);
+		isPath = (this.areCitiesValid(src, dst)==1) ? pathMap.get(src).equals(dst)
+		 ? 1 : 0 : this.areCitiesValid(src, dst);
 		return isPath;
 	}
+
+//-----------------------------------------------------------
+	// public Boolean trackThePath(String from, String to, List<String> pathMap) {
+	// 	pathMap.add(from);
+	// 	if(this.hasDirectPath(from, to)) return true;
+	// 	for (String city: allCities.get(from).directTo) {
+	// 		if(!pathMap.contains(city)) {
+	// 			if(trackThePath(city, to, pathMap)) return true;
+	// 		}
+	// 	}
+	// 	return false;
+	// }
+
+	// public Boolean hasPath(String from, String to) {
+	// 	List<String> pathMap = new ArrayList<String>();
+	// 	return this.trackThePath(from, to, pathMap);
+	// }
+//-------------------------------------------------------------
+
 	public String givePathStatus(){
 		switch(isPath){
 			case 0 : status = "false"; break;

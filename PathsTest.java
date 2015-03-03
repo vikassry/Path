@@ -9,8 +9,8 @@ public class PathsTest{
 		String [] cities = {"Bangalore","Beijing","Singapore","Seoul"};
 		Path p = new Path(cities);
 		for(String city: cities) {
-			assertEquals(p.path.containsKey(city), true);
-			assertEquals(p.path.get(city), new ArrayList<String>());
+			assertEquals(p.pathMap.containsKey(city), true);
+			assertEquals(p.pathMap.get(city), new ArrayList<String>());
 		}
 	}
 	
@@ -22,8 +22,8 @@ public class PathsTest{
 		p.setPath(routes[0],routes[1]);
 		p.setPath(routes[1],routes[0]);
 
-		assertEquals(p.path.get("Bangalore").get(0), "Singapore");
-		assertEquals(p.path.get("Singapore").get(0), "Bangalore");
+		assertEquals(p.pathMap.get("Bangalore").get(0), "Singapore");
+		assertEquals(p.pathMap.get("Singapore").get(0), "Bangalore");
 	}
 
 	@Test
@@ -34,17 +34,17 @@ public class PathsTest{
 						{"Singapore","Seoul"}, {"Singapore","Dubai"},
 						{"Seoul","Beijing"}, {"Beijing","Tokyo"}};
 		p.addPaths(routes);
-		for (String city : p.path.keySet()) {
-			System.out.println("=  src "+city + " destination-> " + p.path.get(city));
+		for (String city : p.pathMap.keySet()) {
+			System.out.println("=  src "+city + " destination-> " + p.pathMap.get(city));
 		}
 
-		Map<String,List<String>> path = p.path;
-		assertEquals(path.get("Bangalore").get(0),"Singapore");
-		assertEquals(path.get("Singapore").get(0),"Bangalore");
-		assertEquals(path.get("Singapore").get(1),"Seoul");
-		assertEquals(path.get("Singapore").get(2),"Dubai");
-		assertEquals(path.get("Seoul").get(0),"Singapore");
-		assertEquals(path.get("Seoul").get(1),"Beijing");
+		Map<String,List<String>> pathMap = p.pathMap;
+		assertEquals(pathMap.get("Bangalore").get(0),"Singapore");
+		assertEquals(pathMap.get("Singapore").get(0),"Bangalore");
+		assertEquals(pathMap.get("Singapore").get(1),"Seoul");
+		assertEquals(pathMap.get("Singapore").get(2),"Dubai");
+		assertEquals(pathMap.get("Seoul").get(0),"Singapore");
+		assertEquals(pathMap.get("Seoul").get(1),"Beijing");
 	}
 
 	@Test
@@ -55,7 +55,6 @@ public class PathsTest{
 						{"Singapore","Seoul"}, {"Singapore","Dubai"},
 						{"Seoul","Beijing"}, {"Beijing","Tokyo"}};
 		p.addPaths(routes);
-		Map<String,List<String>> path = p.path;
 		assertEquals(p.areCitiesValid("Singapore","Bangalore"),1);
 	}
 
@@ -67,7 +66,6 @@ public class PathsTest{
 						{"Singapore","Seoul"}, {"Singapore","Dubai"},
 						{"Seoul","Beijing"}, {"Beijing","Tokyo"}};
 		p.addPaths(routes);
-		Map<String,List<String>> path = p.path;
 		assertEquals(p.areCitiesValid("Singapore","Stockholm"),3);
 		assertEquals(p.areCitiesValid("Chennai","Singapore"),2);
 	}
@@ -94,9 +92,9 @@ public class PathsTest{
 		assertFalse(p.isDirectPath("Bangalore","Tokyo"));
 	}
 
-	
+
 	// @Test
-	// public void givePathStatus_gives_No_city_named_Chennai_in_database_when_no_direct_flight_from_Chennai_available(){
+	// public void givePathMapStatus_gives_No_city_named_Chennai_in_database_when_no_direct_flight_from_Chennai_available(){
 	// 	Map<String,String> path = new HashMap<String,String>();
 	// 	path.put("Bangalore","Singapore");
 	// 	Path p = new Path(path,"Chennai","Singapore");
