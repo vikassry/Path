@@ -26,7 +26,6 @@ public class PathsTest{
 		assertEquals(p.path.get("Singapore").get(0), "Bangalore");
 	}
 
-
 	@Test
 	public void addPaths_adds_all_paths_to_pathMap_from_with_both_side_flights(){
 		String [] cities = {"Bangalore","Beijing","Singapore","Seoul"};
@@ -35,6 +34,10 @@ public class PathsTest{
 						{"Singapore","Seoul"}, {"Singapore","Dubai"},
 						{"Seoul","Beijing"}, {"Beijing","Tokyo"}};
 		p.addPaths(routes);
+		for (String city : p.path.keySet()) {
+			System.out.println("=  src "+city + " destination-> " + p.path.get(city));
+		}
+
 		Map<String,List<String>> path = p.path;
 		assertEquals(path.get("Bangalore").get(0),"Singapore");
 		assertEquals(path.get("Singapore").get(0),"Bangalore");
@@ -44,21 +47,31 @@ public class PathsTest{
 		assertEquals(path.get("Seoul").get(1),"Beijing");
 	}
 
-	// @Test
-	// public void isPath_returns_minus_2_when_no_direct_flight_from_Chennai_available(){
-	// 	Map<String,String> path = new HashMap<String,String>();
-	// 	path.put("Bangalore","Singapore");
-	// 	Path p = new Path(path,"Chennai","Singapore");
-	// 	assertEquals(p.isPath(), 2);
-	// }
+	@Test
+	public void areCitiesValid_returns_true_when_both_cities_exists_in_database(){
+		String [] cities = {"Bangalore","Beijing","Singapore","Seoul"};
+		Path p = new Path(cities);
+		String [][] routes = {{"Bangalore","Singapore"},
+						{"Singapore","Seoul"}, {"Singapore","Dubai"},
+						{"Seoul","Beijing"}, {"Beijing","Tokyo"}};
+		p.addPaths(routes);
+		Map<String,List<String>> path = p.path;
+		assertEquals(p.areCitiesValid("Singapore","Bangalore"),1);
+	}
 
-	// @Test
-	// public void isPath_returns_minus_3_when_no_flight_to_Stockholm_available(){
-	// 	Map<String,String> path = new HashMap<String,String>();
-	// 	path.put("Bangalore","Singapore");
-	// 	Path p = new Path(path,"Bangalore","Stockholm");
-	// 	assertEquals(p.isPath(), 3);
-	// }
+	@Test
+	public void areCitiesValid_returns_false_when_one_city_doesnt_exist_in_database(){
+		String [] cities = {"Bangalore","Beijing","Singapore","Seoul"};
+		Path p = new Path(cities);
+		String [][] routes = {{"Bangalore","Singapore"},
+						{"Singapore","Seoul"}, {"Singapore","Dubai"},
+						{"Seoul","Beijing"}, {"Beijing","Tokyo"}};
+		p.addPaths(routes);
+		Map<String,List<String>> path = p.path;
+		assertEquals(p.areCitiesValid("Singapore","Stockholm"),3);
+		assertEquals(p.areCitiesValid("Chennai","Singapore"),2);
+	}
+
 
 	// @Test
 	// public void givePathStatus_gives_No_city_named_Chennai_in_database_when_no_direct_flight_from_Chennai_available(){

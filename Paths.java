@@ -44,9 +44,18 @@ class Path{
 		}
 	}
 
-	public int isPath(){
-		isPath = (path.containsKey(src)==false) ? 2 : 
-		(path.containsValue(dst)==false) ? 3 : path.get(src).equals(dst) ? 1 : 0;
+	public int areCitiesValid(String src, String dst){
+		if(path.get(src)==null) return 2;
+		if(path.get(dst)==null) return 3;
+		return 1;
+	}
+
+	public boolean isDirectPath(String src, String dst){
+		return path.get(src).contains(dst);
+	}
+
+	public int isPath(String src, String dst){
+		isPath = (this.areCitiesValid(src, dst)==1) ? path.get(src).equals(dst) ? 1 : 0 : this.areCitiesValid(src, dst);
 		return isPath;
 	}
 	public String givePathStatus(){
