@@ -18,12 +18,12 @@ class Path{
 	Map<String,List<String>> pathMap = new HashMap<String, List<String>>();
 	String src, dst, status;
 	int isPath;
-	public Path(String[] cities) {
-		for (String city: cities) {
-			List<String> list = new ArrayList<String>();
-			pathMap.put(city, list);
-		}
-	}
+	// public Path(String[] cities) {
+	// 	for (String city: cities) {
+	// 		List<String> list = new ArrayList<String>();
+	// 		pathMap.put(city, list);
+	// 	}
+	// }
 
 	public void setPath(String src, String dst){
 		if(pathMap.containsKey(src)){
@@ -69,16 +69,8 @@ class Path{
 		return isPath;
 	}
 
-//-----------------------------------------------------------
-
-	// public Boolean isPath(String from, String to) {
-	// 	List<String> pathMap = new ArrayList<String>();
-	// 	return this.checkForAnyPath(from, to, pathMap);
-	// }
-//-------------------------------------------------------------
-
-	public String givePathStatus(){
-		switch(isPath){
+	public String givePathStatus(String src, String dst){
+		switch(isPath(src, dst)){
 			case 0 : status = "false"; break;
 			case 1 : status = "true"; break;
 			case 2 : status = "No city named "+src+" in database"; break;
@@ -96,13 +88,12 @@ public class Paths {
 							{"Seoul","Beijing"},
 							{"Beijing","Tokyo"}};
 
-		// if(args.length == 2){
-		// 	Path p = new Path();
-		// 	p.addPaths(routes);
-		// 	System.out.println(p.isPath());
-		// 	System.out.println(p.givePathStatus());
-		// }
-		// else 
-		// 	System.out.println("The source and destination are mandatory to mention");
+		if(args.length == 2){
+			Path p = new Path();
+			p.addPaths(routes);
+			System.out.println(p.givePathStatus(args[0], args[1]));
+		}
+		else 
+			System.out.println("The source and destination are mandatory to mention");
 	}
 }
