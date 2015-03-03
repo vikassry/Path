@@ -1,14 +1,49 @@
 import java.util.*;
+// import java.util.Arraylist;
+// import java.util.List;
+
+// class City{
+// 	String city;
+// 	List<String> directGoesTo = new ArrayList<String>();
+	
+// 	public City(String city){
+// 		this.city = city;
+// 	}
+// 	// public void addDestination(String dst){
+// 	// 	directGoesTo.add(dst);
+// 	// }
+// }
 
 class Path{
-	Map<String,String> path;
+	Map<String,List<String>> path = new HashMap<String, List<String>>();
 	String src, dst, status;
 	int isPath;
-	public Path(Map<String,String> path, String src, String dst){
-		this.path = path;
-		this.src = src;
-		this.dst = dst;
+	
+	public Path(String[] cities) {
+		for (String city: cities) {
+			List<String> list = new ArrayList<String>();
+			path.put(city, list);
+		}
 	}
+
+	public void setPath(String src, String dst){
+		if(path.containsKey(src)){
+			path.get(src).add(dst);
+		}
+		else{
+			List<String> list = new ArrayList<String>();
+			list.add(dst);
+			path.put(src, list);
+		}
+	}
+
+	public void addPaths(String [][] routes){
+		for (String[] route : routes) {
+			this.setPath(route[0], route[1]);
+			this.setPath(route[1], route[0]);
+		}
+	}
+
 	public int isPath(){
 		isPath = (path.containsKey(src)==false) ? 2 : 
 		(path.containsValue(dst)==false) ? 3 : path.get(src).equals(dst) ? 1 : 0;
@@ -27,19 +62,19 @@ class Path{
 
 public class Paths {
 	public static void main(String[] args) {
-		Map<String,String> path = new HashMap<String,String>();
-		path.put("Bangalore","Singapore");
-		path.put("Singapore","Seoul");
-		path.put("Singapore","Dubai");
-		path.put("Seoul","Beijing");
-		path.put("Beijing","Tokyo");
+		String [][] routes = {{"Bangalore","Singapore"},
+							{"Singapore","Seoul"},
+							{"Singapore","Dubai"},
+							{"Seoul","Beijing"},
+							{"Beijing","Tokyo"}};
 
-		if(args.length == 2){
-			Path p = new Path(path, args[0], args[1]);
-			System.out.println(p.isPath());
-			System.out.println(p.givePathStatus());
-		}
-		else 
-			System.out.println("The source and destination are mandatory to mention");
+		// if(args.length == 2){
+		// 	Path p = new Path();
+		// 	p.addPaths(routes);
+		// 	System.out.println(p.isPath());
+		// 	System.out.println(p.givePathStatus());
+		// }
+		// else 
+		// 	System.out.println("The source and destination are mandatory to mention");
 	}
 }
