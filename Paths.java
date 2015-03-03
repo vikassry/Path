@@ -36,13 +36,13 @@ class PathManager{
 		pathFinder.add(src);
 		if(this.isDirectPathBetween(src, dst)) return 1;
 		for (String city: pathMap.get(src)) {
-			if(pathFinder.contains(city)==false) {
+			if(pathFinder.contains(city)!=true) {
 				return checkForAnyPath(city, dst, pathFinder);
 			}
 		}
 		return 0;
 	}
-	
+
 	public int isPath(String src, String dst){
 		List<String> pathFinder = new ArrayList<String>();
 		return (this.areCitiesValid(src, dst)==1) ? this.checkForAnyPath(src,dst,pathFinder) 
