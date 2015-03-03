@@ -51,7 +51,7 @@ class Path{
 	}
 
 	public boolean isDirectPath(String src, String dst){
-		return pathMap.get(src).contains(dst);
+		return (this.areCitiesValid(src,dst)==1 && pathMap.get(src).contains(dst));
 	}
 
 	public int isPath(String src, String dst){

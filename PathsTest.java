@@ -82,7 +82,7 @@ public class PathsTest{
 	}
 
 	@Test
-	public void isDirectPath_returns_true_when_direct_path_between_BLR_TKY(){
+	public void isDirectPath_returns_false_when_direct_path_between_BLR_TKY(){
 		String [] cities = {"Bangalore","Beijing","Singapore","Seoul"};
 		Path p = new Path(cities);
 		String [][] routes = {{"Bangalore","Singapore"},
@@ -92,6 +92,16 @@ public class PathsTest{
 		assertFalse(p.isDirectPath("Bangalore","Tokyo"));
 	}
 
+	@Test
+	public void isDirectPath_returns_false_when_direct_path_between_any_invalid_city(){
+		String [] cities = {"Bangalore","Beijing","Singapore","Seoul"};
+		Path p = new Path(cities);
+		String [][] routes = {{"Bangalore","Singapore"},
+						{"Singapore","Seoul"}, {"Singapore","Dubai"},
+						{"Seoul","Beijing"}, {"Beijing","Tokyo"}};
+		p.addPaths(routes);
+		assertFalse(p.isDirectPath("Bangalore","Chennai"));
+	}
 
 	// @Test
 	// public void givePathMapStatus_gives_No_city_named_Chennai_in_database_when_no_direct_flight_from_Chennai_available(){
