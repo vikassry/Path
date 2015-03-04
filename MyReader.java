@@ -5,12 +5,12 @@ public class MyReader{
     public MyReader(String fileName){
         this.file = fileName;
     }
-    public String readFile() throws IOException {
+    public String getContent() throws IOException {
         File thisFile = new File(this.file);
         FileReader fr = null;
         try {
             fr = new FileReader(thisFile);
-        } catch(Exception e) {}
+        } catch(Exception e) { }
         
         BufferedReader br = new BufferedReader(fr);
         int length = (int)thisFile.length();

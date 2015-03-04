@@ -34,12 +34,11 @@ class PathManager{
 
 	public int checkForAnyPath(String src, String dst, List<String> pathFinder) {
 		pathFinder.add(src);
+		if(src.equals(dst)) return 1;
 		if(this.isDirectPathBetween(src, dst)) return 1;
 		for (String city: pathMap.get(src)) {
-			if(!pathFinder.contains(city)) {
-				if(checkForAnyPath(city, dst, pathFinder)==1)
-					return 1;
-			}
+			if(!pathFinder.contains(city) && checkForAnyPath(city, dst, pathFinder)==1)
+				return 1;
 		}
 		return 0;
 	}
@@ -50,21 +49,20 @@ class PathManager{
 		: this.areCitiesValid(src, dst);
 	}
 
-	public String getPath(String src, String dst, String route) {
+	public String getPath(String src, String dst) {
+		String route = "";
 		List<String> pathList = new ArrayList<String>();
 		if(this.checkForAnyPath(src, dst, pathList)==0) return "false";
-		for (String city: pathList) {
+		for (String city: pathList)
 			route = route + city + "-> ";
-		}
-		route += dst;
-		return route;
+		return route += dst;
 	}
 
 	public String givePathStatus(String src, String dst){
-		String status="", route="";
+		String status = new String();
 		switch(isPath(src, dst)){
 			case 0 : status = "false"; break;
-			case 1 : status = this.getPath(src,dst,route); break;
+			case 1 : status = this.getPath(src,dst); break;
 			case 2 : status = "No city named "+src+" in database"; break;
 			case 3 : status = "No city named "+dst+" in database"; break;	
 		}
@@ -74,18 +72,21 @@ class PathManager{
 
 public class Paths {
 	public static void main(String[] args)throws IOException {
-		if(!args[0].equals("-f")){
+		if(args.length>0 && !args[0].equals("-f")){
 			System.out.println("Invalid option "+args[0]+". Try `-f'");
 			return;
 		}
-		MyReader r = new MyReader(args[1]);
-		String pathContent = r.readFile();
-		String[] routes[] = r.getPaths(pathContent);
 		if(args.length == 4){
+			MyReader r = new MyReader(args[1]);
+			String pathContent = r.getContent();
+			String[] routes[] = r.getPaths(pathContent);
 			PathManager p = new PathManager(routes);
 			System.out.println(p.givePathStatus(args[2], args[3]));
 		}
-		else 
-			System.out.println("The source and destination are mandatory to mention");
+		else {
+			String error = "Not enough information.\r\nPlease enter the source and destination "+
+							"and \r\npathFile source with proper option.";
+			System.out.println(error);
+		}
 	}
 }

@@ -1,6 +1,7 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
 import java.util.*;
+import java.io.*;
 
 public class PathsTest{
 
@@ -187,6 +188,14 @@ public class PathsTest{
 	}
 
 	@Test
+	public void givePathStatus_returns_path_when_both_source_and_destination_are_same(){
+		String [][] routes = {{"Bangalore","Singapore"}};
+		PathManager p = new PathManager(routes);
+
+		assertEquals(p.givePathStatus("Bangalore","Bangalore"), "Bangalore-> Bangalore");
+	}
+
+	@Test
 	public void givePathStatus_returns_false_when_no_direct_flight_between_Bangalore_Tokyo(){
 		String [][] routes = {{"Bangalore","Singapore"},{"Tokyo","Seoul"}};
 		PathManager p = new PathManager(routes);
@@ -194,4 +203,23 @@ public class PathsTest{
 		assertEquals(p.givePathStatus("Singapore","Tokyo"), "false");
 	}
 
+	@Test
+	public void getContent_of_MyReader_reads_the_given_file_and_returns_the_text_from_the_file() throws IOException {
+		String content = "Bangalore,Singapore"+"\r\n"+"Singapore,Seoul"+"\r\n"+
+						"Singapore,Dubai"+"\r\n"+"Seoul,Beijing"+"\r\n"+"Beijing,Tokyo";
+		MyReader mr = new MyReader("Paths.txt");
+		assertEquals(mr.getContent(), content);
+	}
+
+	@Test
+	public void getPaths_returns_array_of_string_arrays_with_source_and_their_corresponding_destination_city() throws IOException {
+		String [][] routes = {{"Bangalore","Singapore"},{"Singapore","Seoul"}, 
+							{"Singapore","Dubai"},{"Seoul","Beijing"}, {"Beijing","Tokyo"}};
+		MyReader mr = new MyReader("Paths.txt");
+		String content = mr.getContent();
+		String [][] expected = mr.getPaths(content);
+		for(int i=0; i<expected.length; i++)
+			assertEquals(expected[i], routes[i]);
+	}
 }
+
