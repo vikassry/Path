@@ -28,14 +28,14 @@ class PathManager{
 	}
 
 	public boolean isDirectPathBetween(String src, String dst){
-		return (this.areCitiesValid(src,dst)==1 && pathMap.get(src).contains(dst));
+		return (this.areCitiesValid(src,dst)==1 && pathMap.get(src).indexOf(dst)> -1);
 	}
 
 	public int checkForAnyPath(String src, String dst, List<String> pathFinder) {
 		pathFinder.add(src);
 		if(this.isDirectPathBetween(src, dst)) return 1;
 		for (String city: pathMap.get(src)) {
-			if(pathFinder.contains(city)!=true) {
+			if(!pathFinder.contains(city)) {
 				return checkForAnyPath(city, dst, pathFinder);
 			}
 		}
@@ -48,10 +48,9 @@ class PathManager{
 		: this.areCitiesValid(src, dst);
 	}
 
-	public String getPath(String src, String dst) {
+	public String getPath(String src, String dst, String route) {
 		List<String> pathList = new ArrayList<String>();
 		if(this.checkForAnyPath(src, dst, pathList)==0) return "false";
-		String route = new String();
 		for (String city: pathList) {
 			route = route + city + "-> ";
 		}
@@ -60,10 +59,10 @@ class PathManager{
 	}
 
 	public String givePathStatus(String src, String dst){
-		String status="";
+		String status="", route="";
 		switch(isPath(src, dst)){
 			case 0 : status = "false"; break;
-			case 1 : status = this.getPath(src,dst); break;
+			case 1 : status = this.getPath(src,dst,route); break;
 			case 2 : status = "No city named "+src+" in database"; break;
 			case 3 : status = "No city named "+dst+" in database"; break;	
 		}
@@ -78,7 +77,6 @@ public class Paths {
 							{"Singapore","Dubai"},
 							{"Seoul","Beijing"},
 							{"Beijing","Tokyo"}};
-
 		if(args.length == 2){
 			PathManager p = new PathManager(routes);
 			System.out.println(p.givePathStatus(args[0], args[1]));

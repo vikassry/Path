@@ -112,6 +112,9 @@ public class PathsTest{
 						{"Singapore","Seoul"}, {"Singapore","Dubai"},
 						{"Seoul","Beijing"}, {"Beijing","Tokyo"}};
 		PathManager p = new PathManager(routes);
+		for (String city : p.pathMap.keySet()) {
+			System.out.println(city+"->  "+ p.pathMap.get(city));
+		}
 		List<String> pathFinder = new ArrayList<String>();
 		
 		assertEquals(p.checkForAnyPath("Tokyo","Bangalore",pathFinder),1);
