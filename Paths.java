@@ -36,7 +36,8 @@ class PathManager{
 		if(this.isDirectPathBetween(src, dst)) return 1;
 		for (String city: pathMap.get(src)) {
 			if(!pathFinder.contains(city)) {
-				return checkForAnyPath(city, dst, pathFinder);
+				if(checkForAnyPath(city, dst, pathFinder)==1)
+					return 1;
 			}
 		}
 		return 0;

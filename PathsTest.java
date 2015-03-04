@@ -112,9 +112,6 @@ public class PathsTest{
 						{"Singapore","Seoul"}, {"Singapore","Dubai"},
 						{"Seoul","Beijing"}, {"Beijing","Tokyo"}};
 		PathManager p = new PathManager(routes);
-		for (String city : p.pathMap.keySet()) {
-			System.out.println(city+"->  "+ p.pathMap.get(city));
-		}
 		List<String> pathFinder = new ArrayList<String>();
 		
 		assertEquals(p.checkForAnyPath("Tokyo","Bangalore",pathFinder),1);
@@ -179,11 +176,14 @@ public class PathsTest{
 	}
 	@Test
 	public void givePathStatus_returns_true_for_direct_flight_between_Singapore_Bangalore(){
-		String [][] routes = {{"Bangalore","Singapore"},{"Singapore","Seoul"}};
+		String [][] routes = {{"Bangalore","Singapore"},
+							{"Singapore","Seoul"}, {"Singapore","Dubai"},
+							{"Seoul","Beijing"}, {"Beijing","Tokyo"}};
 		PathManager p = new PathManager(routes);
 
 		assertEquals(p.givePathStatus("Bangalore","Singapore"), "Bangalore-> Singapore");
-		assertEquals(p.givePathStatus("Seoul","Bangalore"), "Seoul-> Singapore-> Bangalore");
+		assertEquals(p.givePathStatus("Tokyo","Bangalore"), "Tokyo-> Beijing-> Seoul-> Singapore-> Bangalore");
+		assertEquals(p.givePathStatus("Tokyo","Seoul"), "Tokyo-> Beijing-> Seoul");
 	}
 
 	@Test
