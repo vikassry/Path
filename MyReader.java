@@ -10,8 +10,7 @@ public class MyReader{
         FileReader fr = null;
         try {
             fr = new FileReader(thisFile);
-        } catch(Exception e) { }
-        
+        } catch(IOException e) { }
         BufferedReader br = new BufferedReader(fr);
         int length = (int)thisFile.length();
         char cbuf[] = new char[length];
