@@ -2,7 +2,13 @@ import java.util.*;
 
 class PathManager{
 	Map<String,List<String>> pathMap = new HashMap<String, List<String>>();
-	String status;
+
+	public PathManager(String[][] routes){
+		for (String[] route : routes) {
+			this.setPath(route[0], route[1]);
+			this.setPath(route[1], route[0]);
+		}
+	}
 
 	public void setPath(String src, String dst){
 		if(pathMap.containsKey(src)){
@@ -12,13 +18,6 @@ class PathManager{
 			List<String> list = new ArrayList<String>();
 			list.add(dst);
 			pathMap.put(src, list);
-		}
-	}
-
-	public void addPaths(String [][] routes){
-		for (String[] route : routes) {
-			this.setPath(route[0], route[1]);
-			this.setPath(route[1], route[0]);
 		}
 	}
 
@@ -60,8 +59,8 @@ class PathManager{
 		return route;
 	}
 
-
 	public String givePathStatus(String src, String dst){
+		String status="";
 		switch(isPath(src, dst)){
 			case 0 : status = "false"; break;
 			case 1 : status = this.getPath(src,dst); break;
@@ -81,8 +80,7 @@ public class Paths {
 							{"Beijing","Tokyo"}};
 
 		if(args.length == 2){
-			PathManager p = new PathManager();
-			p.addPaths(routes);
+			PathManager p = new PathManager(routes);
 			System.out.println(p.givePathStatus(args[0], args[1]));
 		}
 		else 
