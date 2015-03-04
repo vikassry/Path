@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 class PathManager{
 	Map<String,List<String>> pathMap = new HashMap<String, List<String>>();
@@ -72,15 +73,17 @@ class PathManager{
 }
 
 public class Paths {
-	public static void main(String[] args) {
-		String [][] routes = {{"Bangalore","Singapore"},
-							{"Singapore","Seoul"},
-							{"Singapore","Dubai"},
-							{"Seoul","Beijing"},
-							{"Beijing","Tokyo"}};
-		if(args.length == 2){
+	public static void main(String[] args)throws IOException {
+		if(!args[0].equals("-f")){
+			System.out.println("Invalid option "+args[0]+". Try `-f'");
+			return;
+		}
+		MyReader r = new MyReader(args[1]);
+		String pathContent = r.readFile();
+		String[] routes[] = r.getPaths(pathContent);
+		if(args.length == 4){
 			PathManager p = new PathManager(routes);
-			System.out.println(p.givePathStatus(args[0], args[1]));
+			System.out.println(p.givePathStatus(args[2], args[3]));
 		}
 		else 
 			System.out.println("The source and destination are mandatory to mention");
