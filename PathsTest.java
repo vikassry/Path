@@ -194,8 +194,8 @@ public class PathsTest{
 		String [][] routes = {{"Bangalore","Singapore"},{"Singapore","Seoul"}};
 		p.addPaths(routes);
 
-		assertEquals(p.givePathStatus("Bangalore","Singapore"), "true");
-		assertEquals(p.givePathStatus("Seoul","Bangalore"), "true");
+		assertEquals(p.givePathStatus("Bangalore","Singapore"), "Bangalore-> Singapore");
+		assertEquals(p.givePathStatus("Seoul","Bangalore"), "Seoul-> Singapore-> Bangalore");
 	}
 
 	@Test

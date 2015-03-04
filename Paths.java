@@ -49,10 +49,22 @@ class PathManager{
 		: this.areCitiesValid(src, dst);
 	}
 
+	public String getPath(String src, String dst) {
+		List<String> pathList = new ArrayList<String>();
+		if(this.checkForAnyPath(src, dst, pathList)==0) return "false";
+		String route = new String();
+		for (String city: pathList) {
+			route = route + city + "-> ";
+		}
+		route += dst;
+		return route;
+	}
+
+
 	public String givePathStatus(String src, String dst){
 		switch(isPath(src, dst)){
 			case 0 : status = "false"; break;
-			case 1 : status = "true"; break;
+			case 1 : status = this.getPath(src,dst); break;
 			case 2 : status = "No city named "+src+" in database"; break;
 			case 3 : status = "No city named "+dst+" in database"; break;	
 		}
