@@ -12,7 +12,7 @@ public class PathsTest{
 		String [] route = {"Bangalore","Singapore"};
 		p.setPath(route[0],route[1]);
 
-		assertEquals(p.pathMap.get("Bangalore").get(0), "Singapore");
+		assertEquals(p.pathMap.get("Bangalore").get(0).get(0), "Singapore");
 	}
 
 	@Test
@@ -21,12 +21,12 @@ public class PathsTest{
 								{"Singapore","Dubai"},{"Seoul","Beijing"}, {"Beijing","Tokyo"}};
 		PathManager p = new PathManager(routes);
 
-		Map<String,List<String>> pathMap = p.pathMap;
-		assertEquals(pathMap.get("Singapore").get(0),"Bangalore");
-		assertEquals(pathMap.get("Singapore").get(1),"Seoul");
-		assertEquals(pathMap.get("Singapore").get(2),"Dubai");
-		assertEquals(pathMap.get("Seoul").get(0),"Singapore");
-		assertEquals(pathMap.get("Seoul").get(1),"Beijing");
+		Map<String,List<List<String>>> pathMap = p.pathMap;
+		assertEquals(pathMap.get("Singapore").get(0).get(0),"Bangalore");
+		assertEquals(pathMap.get("Singapore").get(0).get(1),"Seoul");
+		assertEquals(pathMap.get("Singapore").get(0).get(2),"Dubai");
+		assertEquals(pathMap.get("Seoul").get(0).get(0),"Singapore");
+		assertEquals(pathMap.get("Seoul").get(0).get(1),"Beijing");
 	}
 
 	@Test
@@ -222,4 +222,3 @@ public class PathsTest{
 			assertEquals(expected[i], routes[i]);
 	}
 }
-

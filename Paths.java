@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 
 class PathManager{
-	Map<String,List<String>> pathMap = new HashMap<String, List<String>>();
+	Map<String,List<List<String>>> pathMap = new HashMap<String, List<List<String>>>();
 
 	public PathManager(String[][] routes){
 		for (String[] route : routes) {
@@ -13,11 +13,12 @@ class PathManager{
 
 	public void setPath(String src, String dst){
 		if(pathMap.containsKey(src)){
-			pathMap.get(src).add(dst);
+			pathMap.get(src).get(0).add(dst);
 		}
 		else{
-			List<String> list = new ArrayList<String>();
-			list.add(dst);
+			List<List<String>> list = new ArrayList<List<String>>();
+			List<String> l = new ArrayList<String>();
+			l.add(dst); list.add(l);
 			pathMap.put(src, list);
 		}
 	}
@@ -29,14 +30,14 @@ class PathManager{
 	}
 
 	public boolean isDirectPathBetween(String src, String dst){
-		return (this.areCitiesValid(src,dst)==1 && pathMap.get(src).indexOf(dst)> -1);
+		return (this.areCitiesValid(src,dst)==1 && pathMap.get(src).get(0).indexOf(dst)> -1);
 	}
 
 	public int checkForAnyPath(String src, String dst, List<String> pathFinder) {
 		pathFinder.add(src);
 		if(src.equals(dst)) return 1;
 		if(this.isDirectPathBetween(src, dst)) return 1;
-		for (String city: pathMap.get(src)) {
+		for (String city: pathMap.get(src).get(0)) {
 			if(!pathFinder.contains(city) && checkForAnyPath(city, dst, pathFinder)==1)
 				return 1;
 		}
@@ -79,7 +80,7 @@ public class Paths {
 			MyReader r = new MyReader(args[1]);
 			String pathContent = r.getContent();
 			if(pathContent.substring(0,6).equals("Error:")){
-				System.out.println("No database named "+args[1]+" found."); return;
+				System.out.println("No database named `"+args[1]+"' found."); return;
 			}
 			String[] routes[] = r.getPaths(pathContent);
 			PathManager p = new PathManager(routes);
