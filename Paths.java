@@ -72,20 +72,22 @@ class PathManager{
 
 public class Paths {
 	public static void main(String[] args)throws IOException {
-		if(args.length>0 && !args[0].equals("-f")){
-			System.out.println("Invalid option "+args[0]+". Try `-f'");
-			return;
+		if(args.length>=1 && !args[0].equals("-f")){
+			System.out.println("Invalid option "+args[0]+". Try `-f'"); return;
 		}
 		if(args.length == 4){
 			MyReader r = new MyReader(args[1]);
 			String pathContent = r.getContent();
+			if(pathContent.substring(0,6).equals("Error:")){
+				System.out.println("No database named "+args[1]+" found."); return;
+			}
 			String[] routes[] = r.getPaths(pathContent);
 			PathManager p = new PathManager(routes);
 			System.out.println(p.givePathStatus(args[2], args[3]));
 		}
 		else {
-			String error = "Not enough information.\r\nPlease enter the source and destination "+
-							"and \r\npathFile source with proper option.";
+			String error = " Not enough information.\r\n Please enter the source and destination "+
+							"and \r\n pathFile source with proper option.";
 			System.out.println(error);
 		}
 	}

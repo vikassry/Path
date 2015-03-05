@@ -10,7 +10,9 @@ public class MyReader{
         FileReader fr = null;
         try {
             fr = new FileReader(thisFile);
-        } catch(IOException e) { }
+        }catch(IOException e) {
+            return "Error:No database "+file+" found.";
+        }
         BufferedReader br = new BufferedReader(fr);
         int length = (int)thisFile.length();
         char cbuf[] = new char[length];
