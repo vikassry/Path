@@ -1,4 +1,6 @@
-runTest.sh
-m2.jav
 FileSpike.java
 spike.java
+jar/
+m2.jav
+classes/
+junit-4.10.jar
