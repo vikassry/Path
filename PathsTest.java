@@ -203,7 +203,7 @@ public class PathsTest{
 		countryMap.put("Seoul","South Korea");
 		countryMap.put("Dubai","UAE");
 		countryMap.put("Beijing","China");
-		
+
 		String [][] routes = {{"Bangalore","Singapore"},{"Singapore","Seoul"}, 
 							{"Singapore","Dubai"},{"Seoul","Beijing"}, {"Beijing","Tokyo"}};
 		PathManager p = new PathManager(routes,countryMap);
@@ -254,6 +254,24 @@ public class PathsTest{
             assertEquals(expected[i][0], routes[i][0]);
             assertEquals(expected[i][1], routes[i][1]);
         }
+    }
+
+    @Test 
+    public void getCitiesWithCountries_returns_a_map_with_cities_with_their_correspondind_country_name()throws IOException{
+		Map<String,String> countryMap = new HashMap<String,String>();
+		countryMap.put("Bangalore","India");
+		countryMap.put("Tokyo","Japan");
+		countryMap.put("Singapore","Singapore");
+		countryMap.put("Seoul","South Korea");
+		countryMap.put("Dubai","UAE");
+		countryMap.put("Beijing","China");
+
+    	MyReader r = new MyReader("./cities.txt");
+    	String content = r.getContent();
+    	Map<String,String> expected = r.getCitiesWithCountries(content);
+		
+    	assertEquals(countryMap, expected);
+
     }
 
 }

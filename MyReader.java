@@ -6,6 +6,7 @@ public class MyReader{
     public MyReader(String fileName){
         this.file = fileName;
     }
+    
     public String getContent() throws IOException {
         File thisFile = new File(this.file);
         FileReader fr = null;
@@ -20,6 +21,7 @@ public class MyReader{
         br.read(cbuf,0,length);
         return new String(cbuf);
     }   
+
     public String[][] getPaths(String content){
         String lines[] = content.split("\r\n");
         int len = lines.length;
@@ -28,6 +30,7 @@ public class MyReader{
                 allCity[i] = lines[i].split(",");
         return allCity;
     }
+
     public Map<String,String> getCitiesWithCountries(String content){
         Map<String,String> cityWithCountry = new HashMap<String,String>();
         String lines[] = content.split("\r\n");
@@ -37,4 +40,5 @@ public class MyReader{
         }
         return cityWithCountry;
     }
+
 }
