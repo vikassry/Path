@@ -75,7 +75,10 @@ class PathManager{
 public class Paths {
 	public static void main(String[] args)throws IOException {
 		if(args.length>=1 && !args[0].equals("-f")){
-			System.out.println("Invalid option "+args[0]+". Try `-f'"); return;
+			System.out.println("Invalid option "+args[0]+"  Try `-f'"); return;
+		}
+		if(args.length>=3 && !args[2].equals("-c")){
+			System.out.println("Invalid option "+args[2]+"  Try `-c'"); return;
 		}
 		if(args.length == 6){
 			MyReader r = new MyReader(args[1]);
@@ -83,9 +86,6 @@ public class Paths {
 			String pathContent = r.getContent();
 			String cityContent = r2.getContent();
 
-			if(!args[2].equals("-c")){
-				System.out.println("Invalid option "+args[2]+". Try `-c'"); return;
-			}
 			if(pathContent.substring(0,6).equals("Error:")){
 				System.out.println("No database named `"+args[1]+"' found."); return;
 			}
