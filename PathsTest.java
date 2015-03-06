@@ -213,12 +213,15 @@ public class PathsTest{
 
 	@Test
 	public void getPaths_returns_array_of_string_arrays_with_source_and_their_corresponding_destination_city() throws IOException {
-		String [][] routes = {{"Bangalore","Singapore"},{"Singapore","Seoul"}, 
-							{"Singapore","Dubai"},{"Seoul","Beijing"}, {"Beijing","Tokyo"}};
-		MyReader mr = new MyReader("Paths.txt");
-		String content = mr.getContent();
-		String [][] expected = mr.getPaths(content);
-		for(int i=0; i<expected.length; i++)
-			assertEquals(expected[i], routes[i]);
-	}
+        String[][] routes = {{"Bangalore", "Singapore"}, {"Singapore", "Seoul"},
+                {"Singapore", "Dubai"}, {"Seoul", "Beijing"}, {"Beijing", "Tokyo"}};
+        MyReader mr = new MyReader("Paths.txt");
+        String content = mr.getContent();
+        String[][] expected = mr.getPaths(content);
+        int i;
+        for (i = 0; i < expected.length; i++) {
+            assertEquals(expected[i][0], routes[i][0]);
+            assertEquals(expected[i][1], routes[i][1]);
+        }
+    }
 }

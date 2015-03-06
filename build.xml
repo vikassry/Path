@@ -3,7 +3,6 @@
     <property name="build.dir"   value="./"/>
     <property name="classes.dir" value="${build.dir}/classes"/>
     <property name="jar.dir"     value="${build.dir}/jar"/>
-    <!-- <property name="main-class"  value="oata.HelloWorld"/> -->
 
     <target name="clean">
         <delete dir="${build.dir}/classes"/>

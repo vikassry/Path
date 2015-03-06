@@ -3,8 +3,9 @@ import java.io.*;
 
 class PathManager{
 	Map<String,List<List<String>>> pathMap = new HashMap<String, List<List<String>>>();
-
-	public PathManager(String[][] routes){
+	Map<String,String> cityCountryList = new HashMap<String,String>();
+	public PathManager(String[][] routes,  Map<String,String> countries){
+		this.cityCountryList = countries;
 		for (String[] route : routes) {
 			this.setPath(route[0], route[1]);
 			this.setPath(route[1], route[0]);
@@ -19,7 +20,7 @@ class PathManager{
 			List<List<String>> list = new ArrayList<List<String>>();
 			List<String> l = new ArrayList<String>();
 			l.add(dst); list.add(l);
-			pathMap.put(src, list);
+			pathMap.put(src,list);
 		}
 	}
 
@@ -55,8 +56,8 @@ class PathManager{
 		List<String> pathList = new ArrayList<String>();
 		if(this.checkForAnyPath(src, dst, pathList)==0) return "false";
 		for (String city: pathList)
-			route = route + city + "-> ";
-		return route += dst;
+			route = route + city +"["+ cityCountryList.get(city) +"]-> ";
+		return route += dst +"["+ cityCountryList.get(dst) +"]";
 	}
 
 	public String givePathStatus(String src, String dst){
@@ -78,12 +79,18 @@ public class Paths {
 		}
 		if(args.length == 4){
 			MyReader r = new MyReader(args[1]);
+			MyReader r2 = new MyReader("cities.txt");
+			Map<String,String> country = r2.getCitiesWithCountries(r2.getContent());
 			String pathContent = r.getContent();
+			for (String key : country.keySet()) {
+				System.out.println(key+"-> "+country.get(key));
+			}
+
 			if(pathContent.substring(0,6).equals("Error:")){
 				System.out.println("No database named `"+args[1]+"' found."); return;
-			}
+			}	
 			String[] routes[] = r.getPaths(pathContent);
-			PathManager p = new PathManager(routes);
+			PathManager p = new PathManager(routes,country);
 			System.out.println(p.givePathStatus(args[2], args[3]));
 		}
 		else {

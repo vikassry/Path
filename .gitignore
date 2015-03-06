@@ -1,6 +1,9 @@
 FileSpike.java
 spike.java
-jar/
 m2.jav
-classes/
 junit-4.10.jar
+.idea/
+Cities.java
+Paths.iml
+classes/
+jar/

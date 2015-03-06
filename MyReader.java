@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.*;
 
 public class MyReader{
     String file;
@@ -26,5 +27,14 @@ public class MyReader{
         for(int i=0; i<len; i++)
                 allCity[i] = lines[i].split(",");
         return allCity;
+    }
+    public Map<String,String> getCitiesWithCountries(String content){
+        Map<String,String> cityWithCountry = new HashMap<String,String>();
+        String lines[] = content.split("\r\n");
+        for (String line : lines) {
+            String[] splitted_array = line.split(",");
+            cityWithCountry.put(splitted_array[0],splitted_array[1]);
+        }
+        return cityWithCountry;
     }
 }
