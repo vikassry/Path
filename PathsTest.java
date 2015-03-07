@@ -3,6 +3,7 @@ import static org.junit.Assert.*;
 import java.util.*;
 import java.io.*;
 
+
 public class PathsTest{
 	
 	@Test
@@ -183,19 +184,19 @@ public class PathsTest{
 		String [][] routes = {{"Bangalore","Singapore"},{"Singapore","Seoul"}};
 		PathManager p = new PathManager(routes,countryMap);
 
-		assertEquals(p.givePathStatus("Chennai","Singapore"),"No city named Chennai in database");
+		assertEquals(p.givePathResult("Chennai","Singapore"),"No city named Chennai in database");
 	}
 
 	@Test
-	public void givePathStatus_gives_No_city_named_Stockholm_in_database_when_no_flight_to_Stockholm_available(){
+	public void givePathResult_gives_No_city_named_Stockholm_in_database_when_no_flight_to_Stockholm_available(){
 		Map<String,String> countryMap = new HashMap<String,String>();
 		String [][] routes = {{"Bangalore","Singapore"},{"Singapore","Seoul"}};
 		PathManager p = new PathManager(routes,countryMap);
 
-		assertEquals(p.givePathStatus("Bangalore","Stockholm"),"No city named Stockholm in database");
+		assertEquals(p.givePathResult("Bangalore","Stockholm"),"No city named Stockholm in database");
 	}
 	@Test
-	public void givePathStatus_returns_true_for_direct_flight_between_Singapore_Bangalore(){
+	public void givePathResult_returns_true_for_direct_flight_between_Singapore_Bangalore(){
 		Map<String,String> countryMap = new HashMap<String,String>();
 		countryMap.put("Bangalore","India");
 		countryMap.put("Tokyo","Japan");
@@ -208,28 +209,28 @@ public class PathsTest{
 							{"Singapore","Dubai"},{"Seoul","Beijing"}, {"Beijing","Tokyo"}};
 		PathManager p = new PathManager(routes,countryMap);
 
-		assertEquals(p.givePathStatus("Bangalore","Singapore"), "Bangalore[India]-> Singapore[Singapore]");
-		assertEquals(p.givePathStatus("Tokyo","Bangalore"), "Tokyo[Japan]-> Beijing[China]-> Seoul[South Korea]-> Singapore[Singapore]-> Bangalore[India]");
-		assertEquals(p.givePathStatus("Tokyo","Seoul"), "Tokyo[Japan]-> Beijing[China]-> Seoul[South Korea]");
+		assertEquals(p.givePathResult("Bangalore","Singapore"), "Bangalore[India]-> Singapore[Singapore]");
+		assertEquals(p.givePathResult("Tokyo","Bangalore"), "Tokyo[Japan]-> Beijing[China]-> Seoul[South Korea]-> Singapore[Singapore]-> Bangalore[India]");
+		assertEquals(p.givePathResult("Tokyo","Seoul"), "Tokyo[Japan]-> Beijing[China]-> Seoul[South Korea]");
 	}
 
 	@Test
-	public void givePathStatus_returns_path_when_both_source_and_destination_are_same(){
+	public void givePathResult_returns_path_when_both_source_and_destination_are_same(){
 		Map<String,String> countryMap = new HashMap<String,String>();
 		String [][] routes = {{"Bangalore","Singapore"}};
 		countryMap.put("Bangalore","India");
 		PathManager p = new PathManager(routes,countryMap);
 
-		assertEquals(p.givePathStatus("Bangalore","Bangalore"), "Bangalore[India]-> Bangalore[India]");
+		assertEquals(p.givePathResult("Bangalore","Bangalore"), "Bangalore[India]-> Bangalore[India]");
 	}
 
 	@Test
-	public void givePathStatus_returns_false_when_no_direct_flight_between_Bangalore_Tokyo(){
+	public void givePathResult_returns_false_when_no_direct_flight_between_Bangalore_Tokyo(){
 		Map<String,String> countryMap = new HashMap<String,String>();
 		String [][] routes = {{"Bangalore","Singapore"},{"Tokyo","Seoul"}};
 		PathManager p = new PathManager(routes,countryMap);
 
-		assertEquals(p.givePathStatus("Singapore","Tokyo"), "false");
+		assertEquals(p.givePathResult("Singapore","Tokyo"), "false");
 	}
 
 	@Test
@@ -238,17 +239,18 @@ public class PathsTest{
 		String content = "Bangalore,Singapore"+"\r\n"+"Singapore,Seoul"+"\r\n"+
 						"Singapore,Dubai"+"\r\n"+"Seoul,Beijing"+"\r\n"+"Beijing,Tokyo";
 		MyReader mr = new MyReader("Paths.txt");
+
 		assertEquals(mr.getContent(), content);
 	}
 
 	@Test
-	public void getPaths_returns_array_of_string_arrays_with_source_and_their_corresponding_destination_city() throws IOException {
+	public void getDirectPaths_returns_array_of_string_arrays_with_source_and_their_corresponding_destination_city() throws IOException {
 		Map<String,String> countryMap = new HashMap<String,String>();
         String[][] routes = {{"Bangalore", "Singapore"}, {"Singapore", "Seoul"},
                 {"Singapore", "Dubai"}, {"Seoul", "Beijing"}, {"Beijing", "Tokyo"}};
         MyReader mr = new MyReader("Paths.txt");
         String content = mr.getContent();
-        String[][] expected = mr.getPaths(content);
+        String[][] expected = mr.getDirectPaths(content);
         int i;
         for (i = 0; i < expected.length; i++) {
             assertEquals(expected[i][0], routes[i][0]);
@@ -271,7 +273,6 @@ public class PathsTest{
     	Map<String,String> expected = r.getCitiesWithCountries(content);
 		
     	assertEquals(countryMap, expected);
-
     }
 
 }

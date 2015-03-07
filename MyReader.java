@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class MyReader{
-    String file;
+    private String file;
     public MyReader(String fileName){
         this.file = fileName;
     }
@@ -22,7 +22,7 @@ public class MyReader{
         return new String(cbuf);
     }   
 
-    public String[][] getPaths(String content){
+    public String[][] getDirectPaths(String content){
         String lines[] = content.split("\r\n");
         int len = lines.length;
         String allCity[][] = new String[len][lines.length];
@@ -32,13 +32,13 @@ public class MyReader{
     }
 
     public Map<String,String> getCitiesWithCountries(String content){
-        Map<String,String> cityWithCountry = new HashMap<String,String>();
+        Map<String,String> cityWithCountryMap = new HashMap<String,String>();
         String lines[] = content.split("\r\n");
         for (String line : lines) {
             String[] splitted_array = line.split(",");
-            cityWithCountry.put(splitted_array[0],splitted_array[1]);
+            cityWithCountryMap.put(splitted_array[0],splitted_array[1]);
         }
-        return cityWithCountry;
+        return cityWithCountryMap;
     }
 
 }
