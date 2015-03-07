@@ -36,7 +36,7 @@ public class PathManager{
 
 	public int checkForAnyPath(String src, String dst, List<String> pathFinder) {
 		pathFinder.add(src);
-		if(src.equals(dst)) return 1;
+		if(src.equals(dst)) return 0;
 		if(this.isDirectPathBetween(src, dst)) return 1;
 		for (String city: pathMap.get(src).get(0)) {
 			if(!pathFinder.contains(city) && checkForAnyPath(city, dst, pathFinder)==1)
@@ -63,8 +63,7 @@ public class PathManager{
             if (!path.contains(t)) {
                 makePath(t, dst, paths, path);
             }
-        }
-        path.remove(src);
+        } path.remove(src);
 	}
 
 	public String getPath(String src, String dst){
@@ -84,4 +83,5 @@ public class PathManager{
 		}
 		return status;
 	}
+
 }
