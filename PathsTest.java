@@ -23,7 +23,9 @@ public class PathsTest{
 		String [][] routes = {{"Bangalore","Singapore"},{"Singapore","Seoul"}, 
 								{"Singapore","Dubai"},{"Seoul","Beijing"}, {"Beijing","Tokyo"}};
 		PathManager p = new PathManager(routes,countryMap);
-
+		for (String city : p.pathMap.keySet()) {
+			System.out.println(city +">> "+p.pathMap.get(city));
+		}
 		Map<String,List<List<String>>> pathMap = p.pathMap;
 		assertEquals(pathMap.get("Singapore").get(0).get(0),"Bangalore");
 		assertEquals(pathMap.get("Singapore").get(0).get(1),"Seoul");
@@ -126,6 +128,9 @@ public class PathsTest{
 						{"Singapore","Seoul"}, {"Singapore","Dubai"},
 						{"Seoul","Beijing"}, {"Beijing","Tokyo"}};
 		PathManager p = new PathManager(routes,countryMap);
+		for (String key : p.pathMap.keySet()) {
+			System.out.println(key +">> "+p.pathMap.get(key).get(0));
+		}
 		List<String> pathFinder = new ArrayList<String>();
 		
 		assertEquals(p.checkForAnyPath("Tokyo","Bangalore",pathFinder),1);

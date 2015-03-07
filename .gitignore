@@ -7,3 +7,6 @@ Cities.java
 Paths.iml
 classes/
 jar/
+BuildString.java
+p.java
+FindAllPaths.java

@@ -1,5 +1,6 @@
 Bangalore,Singapore
 Singapore,Seoul
+Bangalore,Seoul
 Singapore,Dubai
 Seoul,Beijing
 Beijing,Tokyo

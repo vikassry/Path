@@ -20,7 +20,7 @@
         <mkdir dir="${jar.dir}"/>
         <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
             <manifest>
-                <attribute name="jar" value="${runtest}"/>
+                <attribute name="jar" value="${runTest}"/>
             </manifest>
         </jar>
     </target>

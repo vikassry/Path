@@ -51,13 +51,27 @@ public class PathManager{
 		: this.areCitiesValid(src, dst);
 	}
 
-	public String getPath(String src, String dst) {
-		String route = "";
-		List<String> pathList = new ArrayList<String>();
-		if(this.checkForAnyPath(src, dst, pathList)==0) return "false";
-		for (String city: pathList)
-			route = route + city +"["+ cityCountryList.get(city) +"]-> ";
-		return route += dst +"["+ cityCountryList.get(dst) +"]";
+	public void makePath(String src, String dst, List<List<String>> paths, ArrayList<String> path) {
+		path.add(src);
+        if (src.equals(dst)) {
+            paths.add(new ArrayList<String>(path));
+            path.remove(src);
+            return;
+        }
+        List<String> edges  = pathMap.get(src).get(0);
+        for (String t : edges) {
+            if (!path.contains(t)) {
+                makePath(t, dst, paths, path);
+            }
+        }
+        path.remove(src);
+	}
+
+	public String getPath(String src, String dst){
+		List<List<String>> allPaths = new ArrayList<List<String>>();
+		this.makePath(src, dst, allPaths, new ArrayList<String>());
+		String route = BuildString.joinCountryNames(allPaths, cityCountryList);
+		return route;	
 	}
 
 	public String givePathResult(String src, String dst){

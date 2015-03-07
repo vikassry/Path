@@ -10,8 +10,10 @@ public class Paths {
 		if(args.length>=3 && !args[2].equals("-c")){
 			System.out.println("Invalid option "+args[2]+"  Try `-c'"); return;
 		}
-
-		if(args.length == 6){
+		if(args.length>=5 && args[4].startsWith("-") && !args[4].equals("-a")){
+			System.out.println("Invalid option "+args[4]+"  Try `-a'"); return;
+		}
+		if(args.length >= 6){
 			MyReader r = new MyReader(args[1]);
 			MyReader r2 = new MyReader(args[3]);
 			String pathContent = r.getContent();
@@ -26,7 +28,11 @@ public class Paths {
 			String[] routes[] = r.getDirectPaths(pathContent);
 			Map<String,String> country = r2.getCitiesWithCountries(cityContent);
 			PathManager p = new PathManager(routes,country);
-			System.out.println(p.givePathResult(args[4], args[5]));
+			String result = p.givePathResult(args[args.length-2], args[args.length-1]);
+			if(args.length >=6){
+				result = (args.length ==7 && args[4].equals("-a")) ? result : result.split("\r\n")[0];
+				System.out.println(result);
+			}
 		}
 		else {
 			String error = " Not enough information.\r\n Please enter the source and destination "+
