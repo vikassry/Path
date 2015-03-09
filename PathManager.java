@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 
 public class PathManager{
-	Map<String,List<List<String>>> pathMap = new HashMap<String, List<List<String>>>();
+	private Map<String,List<List<String>>> pathMap = new HashMap<String, List<List<String>>>();
 	private Map<String,String> cityCountryList = new HashMap<String,String>();
 	
 	public PathManager(String[][] routes,  Map<String,String> countries){
@@ -52,7 +52,7 @@ public class PathManager{
 		: this.areCitiesValid(src, dst);
 	}
 
-	public void makePath(String src, String dst, List<List<String>> paths, ArrayList<String> path) {
+	public void findPath(String src, String dst, List<List<String>> paths, ArrayList<String> path) {
 		path.add(src);
         if (src.equals(dst)) {
             paths.add(new ArrayList<String>(path));
@@ -62,14 +62,14 @@ public class PathManager{
         List<String> destinations  = pathMap.get(src).get(0);
         for (String eachDest : destinations) {
             if (!path.contains(eachDest)) {
-                makePath(eachDest, dst, paths, path);
+                findPath(eachDest, dst, paths, path);
             }
         } path.remove(src);
 	}
 
 	public String getPath(String src, String dst){
 		List<List<String>> allPaths = new ArrayList<List<String>>();
-		this.makePath(src, dst, allPaths, new ArrayList<String>());
+		this.findPath(src, dst, allPaths, new ArrayList<String>());
 		String route = BuildString.joinCountryNames(allPaths, cityCountryList, pathMap);
 		return route;	
 	}

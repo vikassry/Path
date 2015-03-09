@@ -19,38 +19,12 @@ public class PathsTest{
     public void setUp() throws Exception {
     	path.add("Bangalore"); path.add("Seoul"); path.add("Singapore");
 		cost1.add("9000"); cost2.add("10000");
-		dst1.add("Seoul"); dst2.add("Singapore"); //dst3.add("Singapore");
+		dst1.add("Seoul"); dst2.add("Singapore");
 		route1.add(dst1); route1.add(cost1);
 		route2.add(dst2); route2.add(cost2);
-		db.put("Bangalore",route1); db.put("Seoul",route2); //db.put("Bangalore",route3);    
+		db.put("Bangalore",route1); db.put("Seoul",route2);
     }
-
-	@Test
-	public void setPath_adds_all_direct_paths_to_map(){
-		Map<String,String> countryMap = new HashMap<String,String>();
-		String [][] routes = {{"Beijing","Seoul","9000"}};
-		PathManager p = new PathManager(routes, countryMap);
-		String [] route = {"Bangalore","Singapore"};
-		p.setPath(route[0],route[1],"9000");
-
-		assertEquals(p.pathMap.get("Bangalore").get(0).get(0), "Singapore");
-	}
-
-	@Test
-	public void addPaths_adds_all_paths_to_pathMap_from_with_both_side_flights(){
-		Map<String,String> countryMap = new HashMap<String,String>();
-		String [][] routes = {{"Bangalore","Singapore","7000"},{"Singapore","Seoul","9000"}, 
-								{"Singapore","Dubai","12000"},{"Seoul","Beijing","3000"}, {"Beijing","Tokyo","5000"}};
-		PathManager p = new PathManager(routes,countryMap);
-		Map<String,List<List<String>>> pathMap = p.pathMap;
-
-		assertEquals(pathMap.get("Singapore").get(0).get(0),"Bangalore");
-		assertEquals(pathMap.get("Singapore").get(0).get(1),"Seoul");
-		assertEquals(pathMap.get("Singapore").get(0).get(2),"Dubai");
-		assertEquals(pathMap.get("Seoul").get(0).get(0),"Singapore");
-		assertEquals(pathMap.get("Seoul").get(0).get(1),"Beijing");
-	}
-
+	
 	@Test
 	public void areCitiesValid_returns_1_when_both_cities_exists_in_database(){
 		Map<String,String> countryMap = new HashMap<String,String>();
