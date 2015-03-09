@@ -88,17 +88,17 @@ public class PathsTest{
 	}
 
 	@Test
-	public void checkForAnyPath_returns_1_for_direct_path_between_2_cities(){
+	public void isAnyPathAvailable_returns_1_for_direct_path_between_2_cities(){
 		Map<String,String> countryMap = new HashMap<String,String>();
 		String [][] routes = {{"Bangalore","Singapore"}};
 		PathManager p = new PathManager(routes,countryMap);
 		List<String> pathFinder = new ArrayList<String>();
 		
-		assertEquals(p.checkForAnyPath("Bangalore","Singapore",pathFinder),1);
+		assertEquals(p.isAnyPathAvailable("Bangalore","Singapore",pathFinder),1);
 	}
 
 	@Test
-	public void checkForAnyPath_returns_1_for_indirect_path_between_BLR_and_TKY(){
+	public void isAnyPathAvailable_returns_1_for_indirect_path_between_BLR_and_TKY(){
 		Map<String,String> countryMap = new HashMap<String,String>();
 		String [][] routes = {{"Bangalore","Singapore"},
 							{"Singapore","Seoul"}, {"Singapore","Dubai"},
@@ -106,22 +106,22 @@ public class PathsTest{
 		PathManager p = new PathManager(routes,countryMap);
 		List<String> pathFinder = new ArrayList<String>();
 		
-		assertEquals(p.checkForAnyPath("Bangalore","Tokyo",pathFinder),1);
+		assertEquals(p.isAnyPathAvailable("Bangalore","Tokyo",pathFinder),1);
 	}
 
 	@Test
-	public void checkForAnyPath_returns_3_for_path_between_BLR_and_STKHM(){
+	public void isAnyPathAvailable_returns_3_for_path_between_BLR_and_STKHM(){
 		Map<String,String> countryMap = new HashMap<String,String>();
 		String [][] routes = {{"Bangalore","Singapore"},
 							{"Singapore","Seoul"}, {"Singapore","Dubai"}};
 		PathManager p = new PathManager(routes,countryMap);
 		List<String> pathFinder = new ArrayList<String>();
 		
-		assertEquals(p.checkForAnyPath("Bangalore","Stockholm",pathFinder),0);
+		assertEquals(p.isAnyPathAvailable("Bangalore","Stockholm",pathFinder),0);
 	}
 
 	@Test
-	public void checkForAnyPath_returns_1_for_indirect_path_between_TKY_and_BLR(){
+	public void isAnyPathAvailable_returns_1_for_indirect_path_between_TKY_and_BLR(){
 		Map<String,String> countryMap = new HashMap<String,String>();
 		String [][] routes = {{"Bangalore","Singapore"},
 							{"Singapore","Seoul"}, {"Singapore","Dubai"},
@@ -129,18 +129,18 @@ public class PathsTest{
 		PathManager p = new PathManager(routes,countryMap);
 		List<String> pathFinder = new ArrayList<String>();
 		
-		assertEquals(p.checkForAnyPath("Tokyo","Bangalore",pathFinder),1);
+		assertEquals(p.isAnyPathAvailable("Tokyo","Bangalore",pathFinder),1);
 	}
 
 	@Test
-	public void checkForAnyPath_returns_0_for_path_between_BLR_and_BJNG(){
+	public void isAnyPathAvailable_returns_0_for_path_between_BLR_and_BJNG(){
 		Map<String,String> countryMap = new HashMap<String,String>();
 		String [][] routes = {{"Bangalore","Singapore"},{"Beijing","Tokyo"}};
 		PathManager p = new PathManager(routes,countryMap);
 		List<String> pathFinder = new ArrayList<String>();
 		
-		assertEquals(p.checkForAnyPath("Bangalore","Beijing",pathFinder),0);
-		assertEquals(p.checkForAnyPath("Beijing","Bangalore",pathFinder),0);
+		assertEquals(p.isAnyPathAvailable("Bangalore","Beijing",pathFinder),0);
+		assertEquals(p.isAnyPathAvailable("Beijing","Bangalore",pathFinder),0);
 	}
 
 	@Test

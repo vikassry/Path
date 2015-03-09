@@ -14,6 +14,7 @@ public class MyReader{
             fr = new FileReader(thisFile);
         }catch(IOException e) {
             return "Error:No database "+file+" found.";
+            // throw new Exception("Error:No database "+file+" found.")
         }
         BufferedReader br = new BufferedReader(fr);
         int length = (int)thisFile.length();

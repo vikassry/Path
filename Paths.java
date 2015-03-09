@@ -3,7 +3,6 @@ import java.io.*;
 
 public class Paths {
 	public static void main(String[] args)throws IOException {
-
 		if(args.length>=1 && !args[0].equals("-f")){
 			System.out.println("Invalid option "+args[0]+"  Try `-f'"); return;
 		}
@@ -24,7 +23,7 @@ public class Paths {
 			}
 			if(cityContent.substring(0,6).equals("Error:")){
 				System.out.println("No database named `"+args[3]+"' found."); return;
-			}	
+			}
 			String[] routes[] = r.getDirectPaths(pathContent);
 			Map<String,String> country = r2.getCitiesWithCountries(cityContent);
 			PathManager p = new PathManager(routes,country);

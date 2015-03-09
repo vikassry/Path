@@ -8,20 +8,22 @@ public class PathManager{
 	public PathManager(String[][] routes,  Map<String,String> countries){
 		this.cityCountryList = countries;
 		for (String[] route : routes) {
-			this.setPath(route[0], route[1]);
-			this.setPath(route[1], route[0]);
+			System.out.println(route[0] +" - " +route[1]+" - "+ route[2]);
+			this.setPath(route[0], route[1], route[2]);
+			this.setPath(route[1], route[0], route[2]);
 		}
 	}
 
-	public void setPath(String src, String dst){
+	public void setPath(String src, String dst, String fare){
 		if(!pathMap.containsKey(src)){
 			List<List<String>> list = new ArrayList<List<String>>();
-			List<String> l = new ArrayList<String>();
-			l.add(dst); list.add(l);
-			pathMap.put(src,list);
+			List<String> d = new ArrayList<String>();
+			List<String> cost = new ArrayList<String>();
+			d.add(dst); cost.add(fare); list.add(d); list.add(cost);
+			pathMap.put(src,list);  return;
 		}
-		else 
-			pathMap.get(src).get(0).add(dst);
+		pathMap.get(src).get(0).add(dst);
+		pathMap.get(src).get(1).add(fare);
 	}
 
 	public int areCitiesValid(String src, String dst){
@@ -34,12 +36,12 @@ public class PathManager{
 		return (this.areCitiesValid(src,dst)==1 && pathMap.get(src).get(0).indexOf(dst)> -1);
 	}
 
-	public int checkForAnyPath(String src, String dst, List<String> pathFinder) {
+	public int isAnyPathAvailable(String src, String dst, List<String> pathFinder) {
 		pathFinder.add(src);
 		if(src.equals(dst)) return 0;
 		if(this.isDirectPathBetween(src, dst)) return 1;
 		for (String city: pathMap.get(src).get(0)) {
-			if(!pathFinder.contains(city) && checkForAnyPath(city, dst, pathFinder)==1)
+			if(!pathFinder.contains(city) && isAnyPathAvailable(city, dst, pathFinder)==1)
 				return 1;
 		}
 		return 0;
@@ -47,7 +49,7 @@ public class PathManager{
 
 	public int isPath(String src, String dst){
 		List<String> pathFinder = new ArrayList<String>();
-		return (this.areCitiesValid(src, dst)==1) ? this.checkForAnyPath(src,dst,pathFinder) 
+		return (this.areCitiesValid(src, dst)==1) ? this.isAnyPathAvailable(src,dst,pathFinder) 
 		: this.areCitiesValid(src, dst);
 	}
 
@@ -58,10 +60,10 @@ public class PathManager{
             path.remove(src);
             return;
         }
-        List<String> edges  = pathMap.get(src).get(0);
-        for (String t : edges) {
-            if (!path.contains(t)) {
-                makePath(t, dst, paths, path);
+        List<String> destinations  = pathMap.get(src).get(0);
+        for (String eachDest : destinations) {
+            if (!path.contains(eachDest)) {
+                makePath(eachDest, dst, paths, path);
             }
         } path.remove(src);
 	}
@@ -69,7 +71,7 @@ public class PathManager{
 	public String getPath(String src, String dst){
 		List<List<String>> allPaths = new ArrayList<List<String>>();
 		this.makePath(src, dst, allPaths, new ArrayList<String>());
-		String route = BuildString.joinCountryNames(allPaths, cityCountryList);
+		String route = BuildString.joinCountryNames(allPaths, cityCountryList, pathMap);
 		return route;	
 	}
 
