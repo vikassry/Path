@@ -29,7 +29,8 @@ public class Paths {
 			PathManager p = new PathManager(routes,country);
 			String result = p.givePathResult(args[args.length-2], args[args.length-1]);
 			if(args.length >=6){
-				result = (args.length ==7 && args[4].equals("-a")) ? result : result.split("\r\n")[0];
+				String[] pathInfo = result.split("\r\n");
+				result = (args.length ==7 && args[4].equals("-a")) ? result : pathInfo[0]+"\r\n"+pathInfo[1];
 				System.out.println(result);
 			}
 		}

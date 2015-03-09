@@ -8,7 +8,6 @@ public class PathManager{
 	public PathManager(String[][] routes,  Map<String,String> countries){
 		this.cityCountryList = countries;
 		for (String[] route : routes) {
-			System.out.println(route[0] +" - " +route[1]+" - "+ route[2]);
 			this.setPath(route[0], route[1], route[2]);
 			this.setPath(route[1], route[0], route[2]);
 		}
