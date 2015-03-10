@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="29d73a60-6706-4b0f-9ace-8aa1fc84540d" name="Default" comment="version 8 complete">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/paths/BuildString.java" afterPath="$PROJECT_DIR$/src/com/paths/BuildString.java" />
+    <list default="true" id="29d73a60-6706-4b0f-9ace-8aa1fc84540d" name="Default" comment="tried to refactored but same field overwrites in map&#10;So again corrected the tests&#10;and Version 8 done !&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/paths/MyReader.java" afterPath="$PROJECT_DIR$/src/com/paths/MyReader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/paths/PathManager.java" afterPath="$PROJECT_DIR$/src/com/paths/PathManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/paths/Paths.java" afterPath="$PROJECT_DIR$/src/com/paths/Paths.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test/PathsTest.java" afterPath="$PROJECT_DIR$/Test/PathsTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Paths.iws" />
@@ -31,13 +30,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PathsTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PathsTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Test/PathsTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.55417407" vertical-offset="5568" max-vertical-offset="7488">
-              <caret line="245" column="0" selection-start-line="245" selection-start-column="0" selection-end-line="245" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="5984" max-vertical-offset="7488">
+              <caret line="259" column="0" selection-start-line="259" selection-start-column="0" selection-end-line="259" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#393#420#0" expanded="true" />
+                <element signature="e#511#519#0" expanded="true" />
+                <element signature="e#561#569#0" expanded="true" />
+                <element signature="e#618#632#0" expanded="true" />
+                <element signature="e#681#695#0" expanded="true" />
+                <element signature="e#736#744#0" expanded="true" />
                 <element signature="e#12698#12713#0" expanded="true" />
                 <element signature="e#12909#12923#0" expanded="true" />
               </folding>
@@ -48,16 +53,16 @@
       <file leaf-file-name="PathManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/paths/PathManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1609" max-vertical-offset="2328">
-              <caret line="75" column="86" selection-start-line="75" selection-start-column="86" selection-end-line="75" selection-end-column="86" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1272" max-vertical-offset="2232">
+              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#241#256#0" expanded="true" />
-                <element signature="e#698#712#0" expanded="true" />
-                <element signature="e#758#766#0" expanded="true" />
-                <element signature="e#815#823#0" expanded="true" />
-                <element signature="e#1885#1893#0" expanded="true" />
-                <element signature="e#2682#2696#0" expanded="true" />
+                <element signature="e#131#159#0" expanded="true" />
+                <element signature="e#223#238#0" expanded="true" />
+                <element signature="e#680#694#0" expanded="true" />
+                <element signature="e#740#748#0" expanded="true" />
+                <element signature="e#797#805#0" expanded="true" />
+                <element signature="e#1867#1875#0" expanded="true" />
+                <element signature="e#2664#2678#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -76,21 +81,21 @@
       <file leaf-file-name="MyReader.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/paths/MyReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="830" max-vertical-offset="1386">
-              <caret line="59" column="1" selection-start-line="59" selection-start-column="1" selection-end-line="59" selection-end-column="1" />
+            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1034">
+              <caret line="0" column="17" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1170#1185#0" expanded="true" />
+                <element signature="e#1098#1113#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Paths.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Paths.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/paths/Paths.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="512" max-vertical-offset="1296">
-              <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.93152636" vertical-offset="475" max-vertical-offset="1272">
+              <caret line="47" column="1" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -102,6 +107,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode />
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -111,11 +119,11 @@
         <option value="$PROJECT_DIR$/data/Paths.txt" />
         <option value="$PROJECT_DIR$/data/cities.txt" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/com/paths/Paths.java" />
         <option value="$PROJECT_DIR$/src/com/paths/BuildString.java" />
-        <option value="$PROJECT_DIR$/src/com/paths/PathManager.java" />
-        <option value="$PROJECT_DIR$/src/com/paths/MyReader.java" />
         <option value="$PROJECT_DIR$/Test/PathsTest.java" />
+        <option value="$PROJECT_DIR$/src/com/paths/MyReader.java" />
+        <option value="$PROJECT_DIR$/src/com/paths/Paths.java" />
+        <option value="$PROJECT_DIR$/src/com/paths/PathManager.java" />
       </list>
     </option>
   </component>
@@ -224,7 +232,7 @@
       <recent name="com.paths" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PathsTest">
+  <component name="RunManager" selected="Application.Paths">
     <configuration default="false" name="PathsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="Paths" />
@@ -248,41 +256,48 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="Paths" type="Application" factoryName="Application" editBeforeRun="true" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.paths.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="com.paths.Paths" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="-f ./data/Paths.txt -c ./data/cities.txt  -a Bangalore Seoul" />
-      <option name="WORKING_DIRECTORY" value="" />
+    <configuration default="false" name="PathsTest.calculateCostOfJourney_returns_the_total_cost_of_the_given_path" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="Paths" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" value="" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="PathsTest" />
+      <option name="METHOD_NAME" value="calculateCostOfJourney_returns_the_total_cost_of_the_given_path" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Paths" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
       <envs />
+      <patterns />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="Main" type="Application" factoryName="Application" editBeforeRun="true" temporary="true">
+    <configuration default="false" name="PathsTest.joinCountryNames_gives_paths_along_with_countries" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="com.paths.Paths" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="-f ./data/Paths.txt -c ./data/cities.txt  -a Bangalore Singapore" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <module name="Paths" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" value="" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="PathsTest" />
+      <option name="METHOD_NAME" value="joinCountryNames_gives_paths_along_with_countries" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Paths" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
       <envs />
+      <patterns />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
@@ -310,25 +325,24 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="PathsTest.getContent_of_MyReader_reads_the_given_file_and_returns_the_text_from_the_file" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="Paths" />
+    <configuration default="false" name="Paths" type="Application" factoryName="Application" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.paths.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="com.paths.Paths" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="-f ./data/Paths.txt -c ./data/cities.txt -a  Bangalore Seoul" />
+      <option name="WORKING_DIRECTORY" value="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="PathsTest" />
-      <option name="METHOD_NAME" value="getContent_of_MyReader_reads_the_given_file_and_returns_the_text_from_the_file" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
+      <module name="Paths" />
       <envs />
-      <patterns />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
@@ -461,18 +475,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="JUnit.PathsTest" />
-      <item index="1" class="java.lang.String" itemvalue="Application.Paths" />
-      <item index="2" class="java.lang.String" itemvalue="Application.Main" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.PathsTest.calculateCostOfJourney_returns_the_total_cost_of_the_given_path" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.PathsTest.joinCountryNames_gives_paths_along_with_countries" />
       <item index="3" class="java.lang.String" itemvalue="JUnit.PathsTest.givePathResult_returns_true_for_direct_flight_between_Singapore_Bangalore" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.PathsTest.getContent_of_MyReader_reads_the_given_file_and_returns_the_text_from_the_file" />
+      <item index="4" class="java.lang.String" itemvalue="Application.Paths" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.PathsTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.PathsTest.getContent_of_MyReader_reads_the_given_file_and_returns_the_text_from_the_file" />
-        <item index="2" class="java.lang.String" itemvalue="Application.Paths" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.PathsTest.givePathResult_returns_true_for_direct_flight_between_Singapore_Bangalore" />
-        <item index="4" class="java.lang.String" itemvalue="Application.Main" />
+        <item index="0" class="java.lang.String" itemvalue="Application.Paths" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.PathsTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.PathsTest.givePathResult_returns_true_for_direct_flight_between_Singapore_Bangalore" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.PathsTest.joinCountryNames_gives_paths_along_with_countries" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.PathsTest.calculateCostOfJourney_returns_the_total_cost_of_the_given_path" />
       </list>
     </recent_temporary>
   </component>
@@ -493,7 +507,13 @@
       <option name="project" value="LOCAL" />
       <updated>1425980148205</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="version 8 complete">
+      <created>1425998613078</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1425998613078</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -503,22 +523,22 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32931727" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34538153" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18473895" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3842035" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32931727" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24861111" sideWeight="0.49917898" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24861111" sideWeight="0.49933067" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24861111" sideWeight="0.500821" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24861111" sideWeight="0.50066936" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -543,7 +563,8 @@
     </option>
     <MESSAGE value="index numbers are showing for multiple path&#10;and not showing for single path as expected" />
     <MESSAGE value="version 8 complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 8 complete" />
+    <MESSAGE value="tried to refactored but same field overwrites in map&#10;So again corrected the tests&#10;and Version 8 done !&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="tried to refactored but same field overwrites in map&#10;So again corrected the tests&#10;and Version 8 done !&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -560,6 +581,12 @@
           <caret line="287" column="44" selection-start-line="287" selection-start-column="44" selection-end-line="287" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#393#420#0" expanded="true" />
+            <element signature="e#511#519#0" expanded="true" />
+            <element signature="e#561#569#0" expanded="true" />
+            <element signature="e#618#632#0" expanded="true" />
+            <element signature="e#681#695#0" expanded="true" />
+            <element signature="e#736#744#0" expanded="true" />
             <element signature="e#12698#12713#0" expanded="true" />
             <element signature="e#12909#12923#0" expanded="true" />
           </folding>
@@ -620,51 +647,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/paths/Paths.java">
+    <entry file="file://$PROJECT_DIR$/src/com/paths/MyReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="512" max-vertical-offset="1296">
-          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1034">
+          <caret line="0" column="17" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1098#1113#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/paths/PathManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1609" max-vertical-offset="2328">
-          <caret line="75" column="86" selection-start-line="75" selection-start-column="86" selection-end-line="75" selection-end-column="86" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1272" max-vertical-offset="2232">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#241#256#0" expanded="true" />
-            <element signature="e#698#712#0" expanded="true" />
-            <element signature="e#758#766#0" expanded="true" />
-            <element signature="e#815#823#0" expanded="true" />
-            <element signature="e#1885#1893#0" expanded="true" />
-            <element signature="e#2682#2696#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/paths/MyReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="830" max-vertical-offset="1386">
-          <caret line="59" column="1" selection-start-line="59" selection-start-column="1" selection-end-line="59" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1170#1185#0" expanded="true" />
+            <element signature="e#131#159#0" expanded="true" />
+            <element signature="e#223#238#0" expanded="true" />
+            <element signature="e#680#694#0" expanded="true" />
+            <element signature="e#740#748#0" expanded="true" />
+            <element signature="e#797#805#0" expanded="true" />
+            <element signature="e#1867#1875#0" expanded="true" />
+            <element signature="e#2664#2678#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Test/PathsTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55417407" vertical-offset="5568" max-vertical-offset="7488">
-          <caret line="245" column="0" selection-start-line="245" selection-start-column="0" selection-end-line="245" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="5984" max-vertical-offset="7488">
+          <caret line="259" column="0" selection-start-line="259" selection-start-column="0" selection-end-line="259" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#393#420#0" expanded="true" />
+            <element signature="e#511#519#0" expanded="true" />
+            <element signature="e#561#569#0" expanded="true" />
+            <element signature="e#618#632#0" expanded="true" />
+            <element signature="e#681#695#0" expanded="true" />
+            <element signature="e#736#744#0" expanded="true" />
             <element signature="e#12698#12713#0" expanded="true" />
             <element signature="e#12909#12923#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/paths/Paths.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.93152636" vertical-offset="475" max-vertical-offset="1272">
+          <caret line="47" column="1" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

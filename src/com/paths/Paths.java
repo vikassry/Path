@@ -13,7 +13,7 @@ public class Paths {
             System.out.println("Invalid option "+args[2]+"  Try `-c'"); return;
         }
         if(args.length>=5 && args[4].startsWith("-") && !args[4].equals("-a")){
-            System.out.println("Invalid option "+args[4]+"  Try `-a"); return;
+            System.out.println("Invalid option "+args[4]+"  Try `-a'"); return;
         }
         if(args.length >= 6){
             MyReader r = new MyReader(args[1]);
@@ -45,5 +45,4 @@ public class Paths {
             System.out.println(error);
         }
     }
-
 }

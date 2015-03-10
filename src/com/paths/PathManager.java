@@ -1,7 +1,6 @@
 package com.paths;
 
 import java.util.*;
-import java.io.*;
 
 public class PathManager{
     private Map<String,List<List<String>>> pathMap = new HashMap<String, List<List<String>>>();
@@ -73,12 +72,11 @@ public class PathManager{
     public String getPath(String src, String dst){
         List<List<String>> allPaths = new ArrayList<List<String>>();
         this.findPath(src, dst, allPaths, new ArrayList<String>());
-        String route = BuildString.joinCountryNames(allPaths, cityCountryList, pathMap);
-        return route;
+        return BuildString.joinCountryNames(allPaths, cityCountryList, pathMap);
     }
 
     public String givePathResult(String src, String dst){
-        String status = new String();
+        String status = null;
         switch(isPath(src, dst)){
             case 0 : status = "false"; break;
             case 1 : status = this.getPath(src,dst); break;
@@ -87,5 +85,4 @@ public class PathManager{
         }
         return status;
     }
-
 }
