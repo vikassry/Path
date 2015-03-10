@@ -22,7 +22,8 @@ public class BuildString{
         int cost = 0;
         for (int i=0; i < path.size()-1; i++) {
             String city = path.get(i);
-            cost += Integer.parseInt(db.get(city).get(1).get(db.get(city).get(0).indexOf(path.get(i+1))));
+            String costInString = db.get(city).get(1).get(db.get(city).get(0).indexOf(path.get(i+1)));
+            cost += Integer.parseInt(costInString);
         }
         return cost;
     }
@@ -46,4 +47,3 @@ public class BuildString{
         return sortedPath;
     }
 }
-

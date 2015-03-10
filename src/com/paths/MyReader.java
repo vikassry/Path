@@ -8,10 +8,9 @@ public class MyReader{
     public MyReader(String fileName){
         this.file = fileName;
     }
-
     public String getContent() throws IOException {
         File thisFile = new File(this.file);
-        FileReader fr = null;
+        FileReader fr;
         try {
             fr = new FileReader(thisFile);
         }catch(IOException e) {
@@ -43,5 +42,19 @@ public class MyReader{
         }
         return cityWithCountryMap;
     }
+
+//    public static Map<String,List<String>> getJourneyCostDetails (String content){
+//        Map<String,List<String>> journeyCostMap = new HashMap<String, List<String>>();
+//        String[] lines = content.split("\r\n");
+//        for (String line : lines){
+//            String[] splitLine = line.split(",");
+//            List<String> costWithDestination = new ArrayList<String>();
+//            costWithDestination.add(splitLine[1]);
+//            costWithDestination.add(splitLine[2]);
+//            journeyCostMap.put(splitLine[0],costWithDestination);
+//        }
+//        System.out.println(journeyCostMap);
+//        return journeyCostMap;
+//    }
 
 }

@@ -211,9 +211,9 @@ public class PathsTest{
                 {"Singapore","Dubai","12000"},{"Seoul","Beijing","3000"}, {"Beijing","Tokyo","5000"}};
         PathManager p = new PathManager(routes,countryMap);
 
-        assertEquals(p.givePathResult("Bangalore","Singapore"), "Bangalore[India]->Singapore[Singapore]\r\nTotal cost: 7000");
-        assertEquals(p.givePathResult("Tokyo","Bangalore"), "Tokyo[Japan]->Beijing[China]->Seoul[South Korea]->Singapore[Singapore]->Bangalore[India]\r\nTotal cost: 25000");
-        assertEquals(p.givePathResult("Tokyo","Seoul"), "Tokyo[Japan]->Beijing[China]->Seoul[South Korea]\r\nTotal cost: 8000");
+        assertEquals(p.givePathResult("Bangalore","Singapore"), "1. Bangalore[India]->Singapore[Singapore]\r\nTotal cost: 7000");
+        assertEquals(p.givePathResult("Tokyo","Bangalore"), "1. Tokyo[Japan]->Beijing[China]->Seoul[South Korea]->Singapore[Singapore]->Bangalore[India]\r\nTotal cost: 25000");
+        assertEquals(p.givePathResult("Tokyo","Seoul"), "1. Tokyo[Japan]->Beijing[China]->Seoul[South Korea]\r\nTotal cost: 8000");
     }
 
     @Test
@@ -237,7 +237,6 @@ public class PathsTest{
 
     @Test
     public void getContent_of_MyReader_reads_the_given_file_and_returns_the_text_from_the_file() throws IOException {
-        Map<String,String> countryMap = new HashMap<String,String>();
         String content = "Bangalore,Singapore,7000"+"\r\n"+"Singapore,Seoul,10000"+"\r\n"+"Singapore,Dubai,12000"+
                 "\r\n"+"Seoul,Beijing,3000"+"\r\n"+"Beijing,Tokyo,5000"+"\r\nDubai,Seoul,9000";
         MyReader mr = new MyReader("./data/Paths.txt");
@@ -247,7 +246,6 @@ public class PathsTest{
 
     @Test
     public void getDirectPaths_returns_array_of_string_arrays_with_source_and_their_corresponding_destination_city() throws IOException {
-        Map<String,String> countryMap = new HashMap<String,String>();
         String[][] routes = {{"Bangalore","Singapore","7000"}, {"Singapore", "Seoul","10000"},{"Singapore", "Dubai","12000"},
                 {"Seoul", "Beijing","3000"}, {"Beijing", "Tokyo","5000"},{"Dubai","Seoul","9000"}};
         MyReader mr = new MyReader("./data/Paths.txt");
@@ -290,9 +288,19 @@ public class PathsTest{
         countryMap.put("Seoul","South Korea");
         List<List<String>> allPaths = new ArrayList<List<String>>();
         allPaths.add(path);
-        String expected = "Bangalore[India]->Seoul[South Korea]->Singapore[Singapore]\r\nTotal cost: 19000";
+        String expected = "1. Bangalore[India]->Seoul[South Korea]->Singapore[Singapore]\r\nTotal cost: 19000";
 
         assertEquals(expected, BuildString.joinCountryNames(allPaths, countryMap, db));
     }
+
+//    @Test
+//    public void getJourneyCostDetails_returns_a_map_having_city_with_its_destination_cost(){
+//        String content = "blr,sngp,5000\r\nsel,tky,3000\r\nbjg,dbi,9000";
+//        Map<String,List<String>> costDetails = new HashMap<String, List<String>>();
+//        Map<String,List<String>> costDetails = new HashMap<String, List<String>>();
+//        costDetails.put("blr",l1); costDetails.put("sel",l2); costDetails.put("bjg",l3);
+//        MyReader r = MyReader.getJourneyCostDetails(content);
+//    }
+
 }
 
