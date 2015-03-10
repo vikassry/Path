@@ -31,10 +31,11 @@ public class Paths {
             Map<String,String> country = r2.getCitiesWithCountries(cityContent);
             PathManager p = new PathManager(routes,country);
             String result = p.givePathResult(args[args.length-2], args[args.length-1]);
-            System.out.println(result);
             if(args.length >=6){
                 String[] pathInfo = result.split("\r\n");
-                result = (args.length ==7 && args[4].equals("-a")) ? result : pathInfo[0]+"\r\n"+pathInfo[1];
+                String singlePath = pathInfo[0]+"\r\n"+pathInfo[1];
+                singlePath = singlePath.substring(3);
+                result = (args.length ==7 && args[4].equals("-a")) ? result : singlePath;
                 System.out.println(result);
             }
         }

@@ -4,7 +4,7 @@ import java.util.*;
 
 public class BuildString{
     public static String joinCountryNames(List<List<String>> paths, Map<String,String> cityCountryMap, Map<String,List<List<String>>> pathMap){
-        String finalRout=""; int cost=0;
+        String finalRout=""; int cost;
         for (int i=0; i<paths.size(); i++) {
             List<String> list = paths.get(i);
             cost = calculateCostOfJourney(list, pathMap);
@@ -29,7 +29,7 @@ public class BuildString{
 
     public static String sortPathsByCost (String strPath){
         String[] paths = strPath.split("\r\n");
-        String temp = "", sortedPath="";
+        String temp, sortedPath="";
         for(int i=0; i<paths.length; i++){
             for(int j=1; j<paths.length-i; j++){
                 if(Integer.parseInt(paths[j-1].split(": ")[1]) > Integer.parseInt(paths[j].split(": ")[1])){
@@ -40,7 +40,7 @@ public class BuildString{
             }
         }
         for (int i=0; i<paths.length; i++){
-            sortedPath += (i == paths.length-1) ? paths[i] : paths[i]+"\r\n";
+            sortedPath += (i == paths.length-1) ? (i+1)+". "+paths[i] : (i+1)+". "+paths[i]+"\r\n";
         }
         sortedPath = sortedPath.replace("Total","\r\nTotal");
         return sortedPath;
