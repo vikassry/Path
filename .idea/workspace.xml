@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="29d73a60-6706-4b0f-9ace-8aa1fc84540d" name="Default" comment="tried to refactored but same field overwrites in map&#10;So again corrected the tests&#10;and Version 8 done !&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/paths/MyReader.java" afterPath="$PROJECT_DIR$/src/com/paths/MyReader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/paths/PathManager.java" afterPath="$PROJECT_DIR$/src/com/paths/PathManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/paths/Paths.java" afterPath="$PROJECT_DIR$/src/com/paths/Paths.java" />
+    <list default="true" id="29d73a60-6706-4b0f-9ace-8aa1fc84540d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Paths.iws" />
@@ -513,7 +510,13 @@
       <option name="project" value="LOCAL" />
       <updated>1425998613078</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="tried to refactored but same field overwrites in map&#10;So again corrected the tests&#10;and Version 8 done !&#10;">
+      <created>1426003496778</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1426003496778</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
