@@ -3,6 +3,7 @@ import java.io.*;
 
 public class Paths {
 	public static void main(String[] args)throws IOException {
+
 		if(args.length>=1 && !args[0].equals("-f")){
 			System.out.println("Invalid option "+args[0]+"  Try `-f'"); return;
 		}
@@ -28,6 +29,7 @@ public class Paths {
 			Map<String,String> country = r2.getCitiesWithCountries(cityContent);
 			PathManager p = new PathManager(routes,country);
 			String result = p.givePathResult(args[args.length-2], args[args.length-1]);
+			System.out.println(result);
 			if(args.length >=6){
 				String[] pathInfo = result.split("\r\n");
 				result = (args.length ==7 && args[4].equals("-a")) ? result : pathInfo[0]+"\r\n"+pathInfo[1];

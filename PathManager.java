@@ -64,7 +64,8 @@ public class PathManager{
             if (!path.contains(eachDest)) {
                 findPath(eachDest, dst, paths, path);
             }
-        } path.remove(src);
+        } 
+        path.remove(src);
 	}
 
 	public String getPath(String src, String dst){

@@ -230,8 +230,8 @@ public class PathsTest{
 	@Test
 	public void getContent_of_MyReader_reads_the_given_file_and_returns_the_text_from_the_file() throws IOException {
 		Map<String,String> countryMap = new HashMap<String,String>();
-		String content = "Bangalore,Singapore,7000"+"\r\n"+"Singapore,Seoul,10000"+"\r\n"+"Bangalore,Seoul,9000\r\n"+
-						"Singapore,Dubai,12000"+"\r\n"+"Seoul,Beijing,3000"+"\r\n"+"Beijing,Tokyo,5000";
+		String content = "Bangalore,Singapore,7000"+"\r\n"+"Singapore,Seoul,10000"+"\r\n"+"Singapore,Dubai,12000"+
+						"\r\n"+"Seoul,Beijing,3000"+"\r\n"+"Beijing,Tokyo,5000"+"\r\nDubai,Seoul,9000";
 		MyReader mr = new MyReader("Paths.txt");
 
 		assertEquals(mr.getContent(), content);
@@ -240,8 +240,8 @@ public class PathsTest{
 	@Test
 	public void getDirectPaths_returns_array_of_string_arrays_with_source_and_their_corresponding_destination_city() throws IOException {
 		Map<String,String> countryMap = new HashMap<String,String>();
-        String[][] routes = {{"Bangalore","Singapore","7000"}, {"Singapore", "Seoul","10000"},{"Bangalore", "Seoul","9000"},
-        					{"Singapore", "Dubai","12000"}, {"Seoul", "Beijing","3000"}, {"Beijing", "Tokyo","5000"}};
+        String[][] routes = {{"Bangalore","Singapore","7000"}, {"Singapore", "Seoul","10000"},{"Singapore", "Dubai","12000"}, 
+        					{"Seoul", "Beijing","3000"}, {"Beijing", "Tokyo","5000"},{"Dubai","Seoul","9000"}};
         MyReader mr = new MyReader("Paths.txt");
         String content = mr.getContent();
         String[][] expected = mr.getDirectPaths(content);
